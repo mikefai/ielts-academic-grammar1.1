@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grammar Ladder — B1+ Grammar Exams</title>
+<meta name="description" content="19 topic exams from tenses to inversion, 25+ multiple-choice questions each, for B1+ learners working on their grammar fundamentals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ====================== TOKENS (shared with Bridge to 7.5) ====================== */
+:root{
+  --ink:#1C2B33; --ink-soft:#52666D; --ink-faint:#8A9AA0;
+  --paper:#FBF7F2; --surface:#FFFFFF; --surface-alt:#F3EEE5; --border:#E7E0D3;
+  --brand:#2B6E5C; --brand-dark:#1F5347; --brand-light:#E1EEE9;
+  --coral:#E15B4B; --coral-dark:#C24638; --coral-light:#FBE4E0;
+  --amber:#B8791E; --amber-light:#FBF0DC;
+  --success:#2F8F5B; --success-light:#E4F5EA; --error:#C4483C; --error-light:#FBE7E4;
+  --font-display:'Fraunces',Georgia,'Iowan Old Style',serif;
+  --font-body:'Plus Jakarta Sans','Segoe UI',system-ui,-apple-system,sans-serif;
+  --font-mono:'JetBrains Mono',Consolas,monospace;
+  --radius-sm:8px; --radius-md:14px; --radius-lg:24px; --radius-pill:999px;
+  --shadow-sm:0 1px 2px rgba(28,43,51,.06), 0 1px 1px rgba(28,43,51,.04);
+  --shadow-md:0 8px 24px rgba(28,43,51,.08);
+  --container:1120px;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth; overflow-x:hidden;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--font-body); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+h1,h2,h3,h4{font-family:var(--font-display); color:var(--ink); margin:0 0 .5em; font-weight:600; line-height:1.15;}
+p{margin:0 0 1em;}
+a{color:var(--brand-dark);}
+.wrap{max-width:var(--container); margin:0 auto; padding:0 24px;}
+
+/* ====================== HEADER ====================== */
+.site-header{position:sticky; top:0; z-index:40; background:rgba(251,247,242,.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--border);}
+.header-row{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; flex-wrap:wrap;}
+.brand{display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:600; font-size:1.15rem; color:var(--ink); text-decoration:none;}
+.brand__mark{display:grid; place-items:center; width:34px; height:34px; border-radius:var(--radius-sm); background:var(--brand); color:#fff; font-family:var(--font-mono); font-weight:600; font-size:1rem;}
+.brand__sub{display:block; font-family:var(--font-body); font-weight:500; font-size:.68rem; color:var(--ink-faint); letter-spacing:.06em; text-transform:uppercase;}
+.header-progress{font-family:var(--font-mono); font-size:.8rem; color:var(--ink-soft); background:var(--surface-alt); padding:8px 14px; border-radius:var(--radius-pill); white-space:nowrap;}
+.header-progress strong{color:var(--brand-dark);}
+.back-link{font-size:.82rem; color:var(--ink-faint); text-decoration:none; font-weight:600;}
+.back-link:hover{color:var(--brand-dark);}
+
+/* ====================== HERO ====================== */
+.hero-simple{padding:44px 0 28px;}
+.hero-simple__eyebrow{display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:.74rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--brand-dark); background:var(--brand-light); padding:6px 14px; border-radius:var(--radius-pill); margin-bottom:18px;}
+.hero-simple h1{font-size:clamp(1.9rem, 3.4vw, 2.6rem); max-width:22ch;}
+.hero-simple p{font-size:1.02rem; color:var(--ink-soft); max-width:66ch;}
+
+/* ====================== CATEGORY + TOPIC NAV ====================== */
+.category-nav{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;}
+.catpill{
+  font-family:var(--font-body); font-weight:700; font-size:.88rem; padding:10px 18px;
+  border-radius:var(--radius-pill); background:var(--surface); border:1px solid var(--border);
+  color:var(--ink-soft); cursor:pointer; transition:background .12s ease, color .12s ease, border-color .12s ease;
+}
+.catpill:hover{border-color:var(--brand);}
+.catpill.is-active{background:var(--ink); color:#fff; border-color:var(--ink);}
+
+.topic-nav{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; padding:16px; background:var(--surface-alt); border-radius:var(--radius-md);}
+.topictab{
+  display:flex; align-items:center; gap:7px; font-family:var(--font-body); font-weight:600; font-size:.85rem;
+  padding:9px 15px; border-radius:var(--radius-pill); background:var(--surface); border:1px solid var(--border);
+  color:var(--ink-soft); cursor:pointer; transition:background .12s ease, color .12s ease, border-color .12s ease;
+}
+.topictab:hover{background:var(--brand-light); color:var(--brand-dark);}
+.topictab.is-active{background:var(--brand); color:#fff; border-color:var(--brand-dark);}
+.topictab__check{width:14px; height:14px; border-radius:50%; display:none; place-items:center; flex-shrink:0; background:var(--coral); color:#fff; font-size:.6rem; line-height:1;}
+.topictab__check::after{content:"✓";}
+.topictab.is-done .topictab__check{display:grid;}
+
+/* ====================== EXAM STAGE ====================== */
+.exam-stage{padding-bottom:60px; min-height:400px;}
+.exam-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:30px 32px;}
+.exam-card__head{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:6px; flex-wrap:wrap;}
+.exam-card__title{font-size:1.5rem; margin-bottom:4px;}
+.exam-card__meta{font-family:var(--font-mono); font-size:.78rem; color:var(--ink-faint);}
+.exam-card__best{font-size:.82rem; color:var(--brand-dark); background:var(--brand-light); padding:5px 12px; border-radius:var(--radius-pill); white-space:nowrap;}
+
+.btn{display:inline-flex; align-items:center; gap:8px; font-family:var(--font-body); font-weight:700; font-size:.92rem; padding:12px 22px; border-radius:var(--radius-pill); border:1px solid transparent; cursor:pointer; text-decoration:none; transition:transform .12s ease, background .15s ease;}
+.btn:active{transform:translateY(1px);}
+.btn--primary{background:var(--coral); color:#fff; box-shadow:var(--shadow-sm);}
+.btn--primary:hover{background:var(--coral-dark);}
+.btn--ghost{background:transparent; color:var(--ink); border-color:var(--border);}
+.btn--ghost:hover{background:var(--surface-alt);}
+
+.qlist{margin-top:22px; display:flex; flex-direction:column; gap:12px;}
+.mock-q{background:var(--surface-alt); border:1px solid var(--border); border-radius:var(--radius-md); padding:16px 18px;}
+.mock-q__num{font-family:var(--font-mono); font-size:.7rem; color:var(--ink-faint); margin-bottom:4px; display:block;}
+.exercise__prompt{font-weight:700; margin-bottom:6px; font-size:.95rem;}
+.exercise__source{color:var(--ink-soft); font-family:var(--font-display); font-style:italic; margin-bottom:12px; font-size:1.02rem;}
+.moptions{display:flex; flex-direction:column; gap:8px;}
+.moption{text-align:left; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 14px; font-family:var(--font-body); font-size:.92rem; color:var(--ink); cursor:pointer;}
+.moption:hover{background:var(--brand-light);}
+.moption.is-selected{background:var(--brand-light); border-color:var(--brand); font-weight:600;}
+
+.exam-actions{position:sticky; bottom:16px; display:flex; justify-content:space-between; align-items:center; background:var(--ink); border-radius:var(--radius-md); padding:12px 18px; margin-top:20px; flex-wrap:wrap; gap:10px;}
+.exam-actions__progress{font-family:var(--font-mono); font-size:.8rem; color:#C9D3D5;}
+
+.results-summary{display:flex; gap:28px; align-items:center; background:var(--ink); border-radius:var(--radius-lg); padding:28px 30px; margin:24px 0; flex-wrap:wrap;}
+.score-circle{position:relative; width:88px; height:88px; border-radius:50%; flex-shrink:0; background:conic-gradient(var(--coral) calc(var(--spct,0)*1%), rgba(255,255,255,.12) 0);}
+.score-circle__hole{position:absolute; inset:7px; border-radius:50%; background:var(--ink); display:grid; place-items:center;}
+.score-circle__num{font-family:var(--font-mono); font-weight:700; font-size:1.3rem; color:#fff; display:block; text-align:center;}
+.score-circle__of{font-family:var(--font-mono); font-size:.62rem; color:#8FA6AA; display:block; text-align:center;}
+.results-summary__text{color:#fff;}
+.results-summary__band{color:#8FD9B4; font-weight:600; margin-bottom:4px;}
+.review-list{display:flex; flex-direction:column; gap:10px; margin-bottom:20px;}
+.review-item{border-radius:var(--radius-sm); padding:12px 14px; font-size:.88rem; border:1px solid var(--border);}
+.review-item.is-correct{background:var(--success-light); border-color:var(--success);}
+.review-item.is-incorrect{background:var(--error-light); border-color:var(--error);}
+.review-item__q{font-weight:600; margin-bottom:4px;}
+.review-item__ans{color:var(--ink-soft); margin:0;}
+
+/* ====================== FOOTER ====================== */
+.site-footer{padding:20px 0 60px; text-align:center; color:var(--ink-faint); font-size:.82rem;}
+
+/* ====================== RESPONSIVE ====================== */
+@media (max-width:640px){
+  .wrap{padding:0 16px;}
+  .exam-card{padding:22px 18px;}
+  .results-summary{flex-direction:column; align-items:flex-start;}
+  .exam-actions{position:static;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a href="index.html" class="brand">
+      <span class="brand__mark">↑</span>
+      <span>Grammar Ladder<span class="brand__sub">B1+ Grammar Exams</span></span>
+    </a>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <a href="index.html" class="back-link">← Bridge to 7.5</a>
+      <span class="header-progress"><strong id="headerProgress">0 / 19</strong> topics attempted</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero-simple">
+    <div class="wrap">
+      <span class="hero-simple__eyebrow">B1+ · From Tenses to Inversion</span>
+      <h1>19 topics. 25+ questions each. No fluff — just find your gaps.</h1>
+      <p>Pick a category, pick a topic, answer every question, then submit to see your score and a full review. Work through them in order if you're not sure where to start, or jump straight to whatever you find hardest.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <nav class="category-nav" id="categoryNav" aria-label="Grammar categories"></nav>
+    <nav class="topic-nav" id="topicNav" aria-label="Grammar topics"></nav>
+    <div class="exam-stage" id="examStage"></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">Grammar Ladder · LBEnglishCo · Denizli</div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var CATEGORIES = [
+    { id:"tenses", label:"Tenses" },
+    { id:"modals", label:"Modals & Comparisons" },
+    { id:"conditionals", label:"Conditionals & Passive" },
+    { id:"clauses", label:"Clauses & Patterns" },
+    { id:"advanced", label:"Advanced & Extra" }
+  ];
+
+  var TOPICS = [];
+  /* TOPIC_DATA_INSERTION_POINT */
+  TOPICS.push({ id:"present-tenses", category:"tenses", title:"Present Simple & Continuous", questions:[
+    { prompt:"Choose the correct form:", source:"She ___ in a bank.", options:["work","works","is working","working"], correct:1, explain:"Habitual fact/routine → present simple. Third person singular takes -s: 'works.'" },
+    { prompt:"Choose the correct form:", source:"Look! It ___ outside.", options:["rains","rain","is raining","raining"], correct:2, explain:"'Look!' signals something happening right now → present continuous: 'is raining.'" },
+    { prompt:"Choose the correct form:", source:"I ___ coffee.", options:["don't like","doesn't like","am not liking","not like"], correct:0, explain:"'Like' is a stative verb (feelings) and doesn't take the continuous form: 'I don't like.'" },
+    { prompt:"Choose the correct question:", source:"What ___ you usually ___ at weekends?", options:["do / do","does / do","do / doing","are / doing"], correct:0, explain:"'Usually' signals a routine → present simple: 'What do you usually do…?'" },
+    { prompt:"Choose the correct form:", source:"He ___ for his exam right now.", options:["studies","study","is studying","studied"], correct:2, explain:"'Right now' signals an action in progress → present continuous." },
+    { prompt:"Choose the correct form:", source:"Water ___ at 100°C.", options:["boils","boil","is boiling","boiled"], correct:0, explain:"A scientific fact is always present simple: 'Water boils at 100°C.'" },
+    { prompt:"Choose the correct form:", source:"They ___ TV at the moment.", options:["watch","watches","are watching","watched"], correct:2, explain:"'At the moment' signals an action in progress → present continuous." },
+    { prompt:"Choose the correct form:", source:"My sister ___ today — it's her day off.", options:["doesn't work","isn't working","don't work","not working"], correct:1, explain:"A temporary situation ('today') uses present continuous negative: 'isn't working.'" },
+    { prompt:"Choose the correct question:", source:"___ you ___ this sentence?", options:["Do / understand","Are / understanding","Does / understand","Do / understanding"], correct:0, explain:"'Understand' is a stative verb (mental state) — it stays in present simple even when asking about right now." },
+    { prompt:"Choose the correct form:", source:"We usually ___ dinner at 7pm.", options:["are having","have","has","having"], correct:1, explain:"Routine time expression 'usually' → present simple: 'have.'" },
+    { prompt:"Choose the correct form:", source:"I ___ you're right about this.", options:["am thinking","think","thinks","thought"], correct:1, explain:"'Think' meaning 'have an opinion' is stative → present simple: 'I think.'" },
+    { prompt:"Choose the correct form:", source:"She ___ about the problem right now — don't interrupt her.", options:["thinks","think","is thinking","thought"], correct:2, explain:"'Think' meaning 'use your mind actively' is an action here, not an opinion, so it CAN be continuous: 'is thinking.'" },
+    { prompt:"Choose the correct form:", source:"He ___ three cars.", options:["is owning","owns","own","owning"], correct:1, explain:"'Own' (possession) is stative — always present simple: 'owns.'" },
+    { prompt:"Choose the correct form (fixed schedule):", source:"The train ___ at 9am tomorrow.", options:["is leaving","leave","leaves","will leaving"], correct:2, explain:"Present simple describes a fixed timetable/schedule, even for a future event: 'The train leaves at 9am.'" },
+    { prompt:"Choose the correct form (personal arrangement):", source:"I ___ my friend at 6pm tomorrow.", options:["meet","am meeting","meets","will meeting"], correct:1, explain:"A personal, already-arranged future plan uses present continuous: 'I am meeting my friend.'" },
+    { prompt:"Choose the correct form:", source:"This soup ___ delicious!", options:["is tasting","taste","tastes","tasted"], correct:2, explain:"'Taste' (describing a quality) is stative → present simple: 'tastes.'" },
+    { prompt:"Choose the correct question:", source:"Why ___ you ___ at me like that?", options:["do / look","are / looking","does / look","is / looking"], correct:1, explain:"'Like that' (right now, in this moment) → present continuous: 'are you looking.'" },
+    { prompt:"Choose the correct form:", source:"He never ___ late.", options:["is arriving","arrive","arrives","arrived"], correct:2, explain:"'Never' is a frequency adverb signalling a routine → present simple: 'arrives.'" },
+    { prompt:"Choose the correct question:", source:"___ it ___ to you?", options:["Does / belong","Do / belong","Is / belonging","Did / belong"], correct:0, explain:"'Belong' (possession) is stative → present simple: 'Does it belong.'" },
+    { prompt:"Choose the correct form:", source:"At the moment, I ___ an interesting book.", options:["read","am reading","reads","readed"], correct:1, explain:"'At the moment' → an action in progress right now → present continuous." },
+    { prompt:"Which sentence is correct?", source:"", options:["I am knowing the answer.","I know the answer.","I am know the answer.","I knowing the answer."], correct:1, explain:"'Know' is a stative verb (mental state) and never takes the continuous form: 'I know.'" },
+    { prompt:"Choose the correct form:", source:"My parents ___ in Denizli.", options:["are living","lives","live","living"], correct:2, explain:"A permanent situation → present simple: 'live.' ('are living' would suggest something temporary.)" },
+    { prompt:"Choose the correct form:", source:"Listen! Somebody ___ at the door.", options:["knocks","is knocking","knock","knocked"], correct:1, explain:"'Listen!' signals an action happening right now → present continuous." },
+    { prompt:"Choose the correct form:", source:"I ___ this grammar point at all.", options:["don't understand","am not understanding","doesn't understand","not understand"], correct:0, explain:"'Understand' is stative → present simple negative: 'don't understand.'" },
+    { prompt:"Choose the correct form (annoying habit):", source:"She ___ her keys at home! It happens every week.", options:["always leaves","is always leaving","always leave","leave always"], correct:1, explain:"Present continuous + 'always' describes an irritating, repeated habit — a special use, different from a neutral routine." },
+    { prompt:"Which sentence describes a general truth?", source:"", options:["The sun is rising in the east.","The sun rises in the east.","The sun rise in the east.","The sun rising in the east."], correct:1, explain:"A permanent, universal fact takes present simple: 'The sun rises in the east.'" }
+  ]});
+
+  TOPICS.push({ id:"past-tenses", category:"tenses", title:"Past Simple & Continuous", questions:[
+    { prompt:"Choose the correct form:", source:"She ___ to the cinema last night.", options:["go","goes","went","was going"], correct:2, explain:"A finished action at a specific past time → past simple: 'went.'" },
+    { prompt:"Choose the correct form:", source:"While I ___ dinner, the phone rang.", options:["cooked","was cooking","cook","have cooked"], correct:1, explain:"A longer action in progress, interrupted by a shorter one → past continuous: 'was cooking.'" },
+    { prompt:"Choose the correct form:", source:"They ___ TV when the lights went out.", options:["watched","were watching","watch","have watched"], correct:1, explain:"An action in progress at the moment something else happened → past continuous: 'were watching.'" },
+    { prompt:"Choose the correct form:", source:"I ___ my homework before I went to bed.", options:["finished","was finishing","finish","had finished"], correct:0, explain:"A simple, completed action at a specific past time → past simple: 'finished.' (Past perfect would need a second past action to compare it to explicitly.)" },
+    { prompt:"Choose the correct question:", source:"What ___ you ___ at 8pm yesterday?", options:["did / do","were / doing","did / doing","was / doing"], correct:1, explain:"Asking about an action in progress at a specific past moment → past continuous: 'were you doing.'" },
+    { prompt:"Choose the correct form:", source:"He ___ his leg while he was skiing.", options:["broke","was breaking","breaks","had broken"], correct:0, explain:"The short, completed action that interrupted the longer one uses past simple: 'broke.'" },
+    { prompt:"Choose the correct form:", source:"This time last year, I ___ in London.", options:["lived","was living","live","had lived"], correct:1, explain:"'This time last year' describes a temporary situation in progress at that time → past continuous: 'was living.'" },
+    { prompt:"Choose the correct form:", source:"We ___ our grandparents every summer when we were children.", options:["were visiting","visited","visit","had visited"], correct:1, explain:"A repeated past habit → past simple: 'visited.' (Past continuous doesn't describe repeated habits.)" },
+    { prompt:"Choose the correct form:", source:"As I ___ the street, I saw an old friend.", options:["crossed","was crossing","cross","had crossed"], correct:1, explain:"The background action in progress → past continuous: 'was crossing,' interrupted by the shorter action 'saw.'" },
+    { prompt:"Which sentence is correct?", source:"", options:["I was seeing that film twice.","I saw that film twice.","I have seeing that film twice.","I seeing that film twice."], correct:1, explain:"A completed action with a stated number of times → past simple: 'I saw that film twice.'" },
+    { prompt:"Choose the correct form:", source:"At 9pm last night, I ___ asleep.", options:["was","was being","were","am"], correct:0, explain:"A state at a specific past moment → past simple of 'be': 'was.'" },
+    { prompt:"Choose the correct form:", source:"She didn't hear the phone because she ___ music.", options:["listened","was listening","listens","had listened"], correct:1, explain:"The background action in progress when something else happened → past continuous: 'was listening.'" },
+    { prompt:"Choose the correct question:", source:"___ you ___ your keys yesterday?", options:["Did / lose","Were / losing","Have / lost","Was / losing"], correct:0, explain:"A single completed past action → past simple question: 'Did you lose.'" },
+    { prompt:"Choose the correct form:", source:"It ___ heavily when we left the house.", options:["rained","was raining","rains","has rained"], correct:1, explain:"An action already in progress at the moment of leaving → past continuous: 'was raining.'" },
+    { prompt:"Choose the correct form:", source:"I ___ two cups of coffee this morning already.", options:["drank","was drinking","have drunk","drink"], correct:2, explain:"A finished action with a present-time link ('this morning,' still today) → present perfect: 'have drunk,' not past simple." },
+    { prompt:"Which sentence best describes two actions happening at the same time in the past?", source:"", options:["While she cooked, he was cleaning.","While she was cooking, he was cleaning.","While she was cooking, he cleaned.","While she cooking, he was cleaning."], correct:1, explain:"Two parallel background actions in progress at the same time both take past continuous: 'was cooking… was cleaning.'" },
+    { prompt:"Choose the correct form:", source:"Yesterday, I ___ up early and ___ for a run.", options:["woke / went","was waking / was going","wake / go","woke / was going"], correct:0, explain:"Two separate, sequential completed actions → both past simple: 'woke… went.'" },
+    { prompt:"Choose the correct form:", source:"He ___ in the garden when it started to rain.", options:["worked","was working","works","had worked"], correct:1, explain:"The action in progress, interrupted by the shorter action ('started') → past continuous: 'was working.'" },
+    { prompt:"Choose the correct form:", source:"I ___ television all evening yesterday.", options:["was watching","watched","watch","have watched"], correct:1, explain:"A duration stated with a clear finished time frame ('all evening yesterday') is often past simple: 'watched.' (Past continuous can also work here, but 'watched' is the more natural, direct choice for a completed activity.)" },
+    { prompt:"Choose the correct question:", source:"What time ___ the film ___?", options:["did / start","was / starting","has / started","did / started"], correct:0, explain:"A single, finished event at a specific past time → past simple question: 'did the film start.'" },
+    { prompt:"Choose the correct form:", source:"While the children ___, their parents ___ dinner.", options:["played / were cooking","were playing / were cooking","played / cooked","were playing / cook"], correct:1, explain:"Two parallel background actions happening at the same time → both past continuous." },
+    { prompt:"Which sentence has an error?", source:"", options:["I was living in Paris for two years.","She was knowing the answer immediately.","We were talking when he arrived.","They were playing football all afternoon."], correct:1, explain:"'Know' is a stative verb and cannot take the continuous form, even in the past: it should be 'She knew the answer immediately.'" },
+    { prompt:"Choose the correct form:", source:"He ___ his car when I saw him.", options:["was washing","washed","washes","had washed"], correct:0, explain:"An action in progress at the exact moment of another action → past continuous: 'was washing.'" },
+    { prompt:"Choose the correct form:", source:"She ___ three languages by the age of ten.", options:["spoke","was speaking","had spoken","speaks"], correct:0, explain:"A simple statement of past ability/fact → past simple: 'spoke.' (Past perfect would need a later past reference point to compare to.)" },
+    { prompt:"Choose the correct form:", source:"I ___ a strange noise, so I ___ to investigate.", options:["heard / went","was hearing / was going","heard / was going","was hearing / went"], correct:0, explain:"Two short, sequential, completed actions → both past simple: 'heard… went.'" },
+    { prompt:"Choose the correct form:", source:"At this time yesterday, we ___ on a plane to Istanbul.", options:["were","was","are","were being"], correct:0, explain:"'We' + past continuous of 'be': 'were.' Describes an action in progress at a specific past moment." }
+  ]});
+
+  TOPICS.push({ id:"present-perfect", category:"tenses", title:"Present Perfect (Simple & Continuous)", questions:[
+    { prompt:"Choose the correct form:", source:"I ___ my homework. I'm free now.", options:["finish","finished","have finished","am finishing"], correct:2, explain:"A completed action with a present result ('I'm free now') → present perfect: 'have finished.'" },
+    { prompt:"Choose the correct form:", source:"She ___ to Italy three times.", options:["went","has been","was going","is going"], correct:1, explain:"Life experience, no specific time stated → present perfect: 'has been.'" },
+    { prompt:"Choose the correct form:", source:"I ___ him since 2015.", options:["know","knew","have known","am knowing"], correct:2, explain:"'Since' + a starting point for a state that continues to now → present perfect: 'have known.' (Stative verb, so simple, not continuous.)" },
+    { prompt:"Choose the correct form:", source:"We ___ for two hours. Let's take a break.", options:["studied","have studied","have been studying","study"], correct:2, explain:"Emphasis on the duration/continuous activity leading up to now → present perfect continuous: 'have been studying.'" },
+    { prompt:"Choose the correct form:", source:"___ you ever ___ sushi?", options:["Did / eat","Have / eaten","Do / eat","Are / eating"], correct:1, explain:"'Ever' + life experience question, no specific time → present perfect: 'Have you ever eaten.'" },
+    { prompt:"Choose the correct form:", source:"I saw that film ___.", options:["last week","already","yet","since Monday"], correct:0, explain:"'Last week' is a finished, specific past time expression — it requires past simple ('saw'), not present perfect. The other options are typical present-perfect time markers." },
+    { prompt:"Choose the correct form:", source:"He ___ his keys — he's looking for them everywhere.", options:["lost","has lost","was losing","loses"], correct:1, explain:"Past action with a clear, visible present result → present perfect: 'has lost.'" },
+    { prompt:"Choose the correct sentence:", source:"", options:["I have seen that film yesterday.","I saw that film yesterday.","I have saw that film yesterday.","I was seeing that film yesterday."], correct:1, explain:"'Yesterday' is a specific finished past time → past simple: 'I saw that film yesterday,' never present perfect." },
+    { prompt:"Choose the correct form:", source:"They ___ here for ten years.", options:["lived","have lived","are living","live"], correct:1, explain:"'For ten years' up to now, still true → present perfect: 'have lived.'" },
+    { prompt:"Choose the correct form:", source:"I ___ my keys. Have you seen them?", options:["don't find","haven't found","didn't find","am not finding"], correct:1, explain:"A past action (losing them) with present relevance (still can't find them) → present perfect negative: 'haven't found.'" },
+    { prompt:"Choose the correct form:", source:"She's tired because she ___ all day.", options:["worked","has been working","works","was working"], correct:1, explain:"The cause of a present state, emphasising the ongoing activity → present perfect continuous: 'has been working.'" },
+    { prompt:"Choose the correct form:", source:"___ you finished your report ___?", options:["Did / already","Have / yet","Did / yet","Have / already"], correct:1, explain:"'Yet' in a question about an expected completed action → present perfect: 'Have you finished… yet?'" },
+    { prompt:"Choose the correct form:", source:"I ___ never ___ such a beautiful place.", options:["have / seen","did / see","have / see","was / seeing"], correct:0, explain:"Life experience with 'never' → present perfect: 'have never seen.'" },
+    { prompt:"Which sentence correctly uses 'just'?", source:"", options:["I just have arrived.","I have just arrived.","I have arrived just.","I just arrived have."], correct:1, explain:"'Just' goes between the auxiliary 'have' and the past participle: 'I have just arrived.'" },
+    { prompt:"Choose the correct form:", source:"How long ___ you ___ Turkish?", options:["do / study","have / studied","have / been studying","did / study"], correct:2, explain:"'How long' asking about an ongoing activity up to now, emphasising duration → present perfect continuous: 'have you been studying.'" },
+    { prompt:"Choose the correct form:", source:"This is the first time I ___ this dish.", options:["tried","have tried","try","am trying"], correct:1, explain:"'This is the first time…' is always followed by present perfect: 'I have tried.'" },
+    { prompt:"Choose the correct form:", source:"He ___ that company since 2020.", options:["worked for","has worked for","works for","was working for"], correct:1, explain:"'Since 2020' up to now → present perfect: 'has worked for.'" },
+    { prompt:"Choose the correct sentence:", source:"", options:["I have been to Paris last year.","I went to Paris last year.","I have gone to Paris last year.","I was going to Paris last year."], correct:1, explain:"'Last year' is a specific finished time → past simple: 'I went to Paris last year.'" },
+    { prompt:"Choose the correct form:", source:"Your eyes are red — ___ you ___?", options:["did / cry","have / been crying","are / crying","do / cry"], correct:1, explain:"A visible present result of a recent continuous activity → present perfect continuous: 'have you been crying.'" },
+    { prompt:"Choose the correct form:", source:"I ___ three cups of coffee so far today.", options:["drank","have drunk","was drinking","drink"], correct:1, explain:"'So far today' — an unfinished time period → present perfect: 'have drunk.'" },
+    { prompt:"Choose the correct form:", source:"She ___ in Denizli her whole life.", options:["has lived","lived","is living","was living"], correct:0, explain:"A state continuing from the past to now, covering 'her whole life' → present perfect: 'has lived.'" },
+    { prompt:"Choose the correct form:", source:"We ___ each other since we were children.", options:["know","knew","have known","are knowing"], correct:2, explain:"Stative verb + 'since' → present perfect simple, not continuous: 'have known.'" },
+    { prompt:"Choose the correct form:", source:"The company ___ profits every year since it opened.", options:["increased","has increased","increases","was increasing"], correct:1, explain:"A repeated pattern continuing up to the present, linked with 'since' → present perfect: 'has increased.'" },
+    { prompt:"Choose the correct form:", source:"I ___ my sister recently — she's been busy.", options:["didn't see","haven't seen","don't see","wasn't seeing"], correct:1, explain:"'Recently,' with present relevance (an ongoing gap up to now) → present perfect negative: 'haven't seen.'" },
+    { prompt:"Which pair correctly contrasts a finished action vs. a general life experience?", source:"", options:["I have visited Rome in 2019. / I went to Rome once.","I went to Rome in 2019. / I have been to Rome once.","I have gone to Rome in 2019. / I visited Rome once.","I went to Rome in 2019. / I went to Rome once, I think."], correct:1, explain:"A specific finished date takes past simple ('went to Rome in 2019'); an unspecified life experience takes present perfect ('have been to Rome once')." },
+    { prompt:"Choose the correct form:", source:"They ___ on this project for six months now.", options:["worked","have been working","work","were working"], correct:1, explain:"An ongoing activity with duration, still true now → present perfect continuous: 'have been working.'" }
+  ]});
+
+  TOPICS.push({ id:"past-perfect", category:"tenses", title:"Past Perfect", questions:[
+    { prompt:"Choose the correct form:", source:"When I arrived at the station, the train ___ already ___.", options:["had / left","has / left","did / leave","was / leaving"], correct:0, explain:"An earlier past action, finished before another past action → past perfect: 'had already left,' before 'arrived.'" },
+    { prompt:"Choose the correct form:", source:"She ___ never ___ a foreign country before that trip.", options:["had / visited","has / visited","did / visit","was / visiting"], correct:0, explain:"An action (or lack of one) before a specific point in the past → past perfect: 'had never visited.'" },
+    { prompt:"Choose the correct form:", source:"By the time we got to the cinema, the film ___.", options:["already started","had already started","has already started","was already starting"], correct:1, explain:"'By the time' + a past event signals the earlier action needs past perfect: 'had already started.'" },
+    { prompt:"Choose the correct form:", source:"I ___ my keys, so I couldn't get into the house.", options:["lost","had lost","have lost","was losing"], correct:1, explain:"The losing happened before the past moment of trying to get in → past perfect: 'had lost.'" },
+    { prompt:"Choose the correct sentence:", source:"", options:["After she had finished her work, she went home.","After she finished her work, she had gone home.","After she has finished her work, she went home.","After she finishing her work, she went home."], correct:0, explain:"The completed earlier action ('finished') takes past perfect; the later action ('went home') takes past simple: 'After she had finished… she went home.'" },
+    { prompt:"Choose the correct form:", source:"He was tired because he ___ all night.", options:["didn't sleep","hadn't slept","doesn't sleep","wasn't sleeping"], correct:1, explain:"The reason (not sleeping) happened before the past state of being tired → past perfect: 'hadn't slept.'" },
+    { prompt:"Choose the correct form:", source:"She told me she ___ that film already.", options:["saw","had seen","has seen","was seeing"], correct:1, explain:"Reported speech: the seeing happened before the telling → past perfect: 'had seen.'" },
+    { prompt:"Choose the correct form:", source:"They ___ the house before they moved to Denizli.", options:["sold","had sold","have sold","were selling"], correct:1, explain:"The selling happened before the moving (an earlier past action) → past perfect: 'had sold.'" },
+    { prompt:"Choose the correct form:", source:"When I got home, I realised I ___ my phone at work.", options:["left","had left","have left","was leaving"], correct:1, explain:"Leaving the phone happened before getting home and realising → past perfect: 'had left.'" },
+    { prompt:"Which sentence is correct?", source:"", options:["I had finished my degree, then I got a job.","I finished my degree, then I got a job.","I have finished my degree, then I got a job.","I was finishing my degree, then I got a job."], correct:1, explain:"Two simple sequential completed past actions don't need past perfect — plain past simple is correct: 'finished… then got.' Past perfect is only needed when the sequence must be clarified out of order." },
+    { prompt:"Choose the correct form:", source:"By 2020, she ___ her own business for five years.", options:["ran","had run","has run","was running"], correct:1, explain:"An earlier state that had already lasted a period of time by a specific past point → past perfect: 'had run.'" },
+    { prompt:"Choose the correct form:", source:"I couldn't call you because I ___ my phone at home.", options:["forgot","had forgotten","have forgotten","was forgetting"], correct:1, explain:"The forgetting happened before the inability to call → past perfect: 'had forgotten.'" },
+    { prompt:"Choose the correct form:", source:"The match ___ before we turned on the TV.", options:["already started","had already started","has already started","was already starting"], correct:1, explain:"An action completed before a later past action (turning on the TV) → past perfect." },
+    { prompt:"Choose the correct sentence:", source:"", options:["She was upset because she had failed the exam.","She was upset because she failed the exam and she had studied hard.","She had upset because she failed the exam.","She was upset because she has failed the exam."], correct:0, explain:"The failing happened before the being upset → past perfect: 'had failed.'" },
+    { prompt:"Choose the correct form:", source:"We ___ dinner by the time he arrived.", options:["finished","had finished","have finished","were finishing"], correct:1, explain:"An action completed before another past action ('arrived') → past perfect: 'had finished.'" },
+    { prompt:"Choose the correct form:", source:"I didn't recognise her because she ___ so much.", options:["changed","had changed","has changed","was changing"], correct:1, explain:"The changing happened before the past moment of not recognising her → past perfect: 'had changed.'" },
+    { prompt:"Choose the correct question:", source:"___ you ever ___ such a thing before that day?", options:["Did / see","Had / seen","Have / seen","Were / seeing"], correct:1, explain:"Asking about experience before a specific past reference point ('that day') → past perfect: 'Had you ever seen.'" },
+    { prompt:"Choose the correct form:", source:"After the guests ___, we cleaned the house.", options:["left","had left","have left","were leaving"], correct:1, explain:"The leaving happened before the cleaning — an earlier past action → past perfect: 'had left.'" },
+    { prompt:"Choose the correct form:", source:"She realised she ___ the wrong bus.", options:["took","had taken","has taken","was taking"], correct:1, explain:"Taking the wrong bus happened before realising it → past perfect: 'had taken.'" },
+    { prompt:"Choose the correct sentence:", source:"", options:["I had never eaten Turkish food before I visited Denizli.","I never ate Turkish food before I had visited Denizli.","I have never eaten Turkish food before I visited Denizli.","I never had eaten Turkish food before I visit Denizli."], correct:0, explain:"The lack of experience before a past point ('before I visited') → past perfect: 'had never eaten.'" },
+    { prompt:"Choose the correct form:", source:"He ___ for the company for ten years before he retired.", options:["worked","had worked","has worked","was working"], correct:1, explain:"A duration completed before another past event ('retired') → past perfect: 'had worked.'" },
+    { prompt:"Choose the correct form:", source:"The film ___ by the time we found our seats.", options:["started","had started","has started","was starting"], correct:1, explain:"An earlier action completed before a later past action ('found our seats') → past perfect." },
+    { prompt:"Choose the correct form:", source:"I was surprised because nobody ___ me about the change.", options:["told","had told","has told","was telling"], correct:1, explain:"The lack of telling happened before the surprise → past perfect: 'had told.'" },
+    { prompt:"Choose the correct form:", source:"Once she ___ her homework, she watched TV.", options:["finished","had finished","has finished","was finishing"], correct:1, explain:"'Once' + a completed earlier action, before a second past action → past perfect: 'had finished.'" },
+    { prompt:"Choose the correct form:", source:"They ___ each other for years before they got married.", options:["knew","had known","have known","were knowing"], correct:1, explain:"A state that existed before another past event ('got married') → past perfect: 'had known.'" },
+    { prompt:"Which sentence correctly shows the earlier of two past actions?", source:"", options:["When she called, I already left.","When she called, I had already left.","When she had called, I already left.","When she was calling, I had left already, before."], correct:1, explain:"The earlier action (leaving) needs past perfect; the later, reference-point action (calling) stays in past simple: 'When she called, I had already left.'" }
+  ]});
+
+  TOPICS.push({ id:"future-forms", category:"tenses", title:"Future Forms", questions:[
+    { prompt:"Choose the correct form (spontaneous decision):", source:"\"It's cold in here.\" \"OK, I ___ close the window.\"", options:["am closing","will","'ll","am going to"], correct:2, explain:"A decision made at the moment of speaking → 'will' (contracted 'll): 'I'll close the window.'" },
+    { prompt:"Choose the correct form (prior plan):", source:"I ___ visit my parents this weekend — I already booked the tickets.", options:["will","'m going to","am","would"], correct:1, explain:"A plan decided before now → 'going to': 'I'm going to visit.'" },
+    { prompt:"Choose the correct form (fixed schedule):", source:"The flight ___ at 6:45am tomorrow.", options:["leaves","is leaving","will leave","is going to leave"], correct:0, explain:"A fixed timetable → present simple: 'The flight leaves at 6:45am.'" },
+    { prompt:"Choose the correct form (arranged plan):", source:"I ___ the dentist tomorrow at 3pm — it's already in my calendar.", options:["will see","see","am seeing","am going to seeing"], correct:2, explain:"A personal, already-arranged future plan → present continuous: 'am seeing.'" },
+    { prompt:"Choose the correct form (prediction with evidence):", source:"Look at those clouds — it ___ rain.", options:["will","is going to","is","would"], correct:1, explain:"A prediction based on present evidence → 'going to': 'is going to rain.'" },
+    { prompt:"Choose the correct form (prediction without clear evidence):", source:"I think it ___ be sunny tomorrow.", options:["is going to","will","is","would"], correct:1, explain:"A prediction based on opinion/belief, not visible evidence → 'will': 'I think it will be sunny.'" },
+    { prompt:"Choose the correct form:", source:"By this time next year, I ___ university.", options:["will finish","will have finished","am finishing","finish"], correct:1, explain:"An action that will be completed before a specific point in the future → future perfect: 'will have finished.'" },
+    { prompt:"Choose the correct form:", source:"This time next week, I ___ on a beach in Antalya.", options:["will lie","will be lying","am lying","lie"], correct:1, explain:"An action in progress at a specific point in the future → future continuous: 'will be lying.'" },
+    { prompt:"Choose the correct sentence:", source:"", options:["I promise I call you tonight.","I promise I will call you tonight.","I promise I am calling you tonight.","I promise I am going to call you tonight."], correct:1, explain:"Promises/offers made at the moment of speaking use 'will': 'I promise I will call you.'" },
+    { prompt:"Choose the correct form:", source:"We ___ the new office by the end of next month.", options:["open","will have opened","are opening","open will"], correct:1, explain:"Completed before a specific future deadline → future perfect: 'will have opened.'" },
+    { prompt:"Which sentence best expresses a fixed timetable?", source:"", options:["The shop is going to open at 9am.","The shop will open at 9am.","The shop opens at 9am every day.","The shop is opening at 9am, I think."], correct:2, explain:"A regular, scheduled opening time → present simple: 'The shop opens at 9am.'" },
+    { prompt:"Choose the correct form:", source:"I'm sure she ___ pass the exam — she's studied so hard.", options:["is going to","will","is","would"], correct:1, explain:"A prediction based on personal belief/confidence → 'will': 'she will pass.'" },
+    { prompt:"Choose the correct form:", source:"Careful, that glass ___ fall off the table!", options:["will","is going to","is","would"], correct:1, explain:"A prediction with clear visible evidence right now → 'going to': 'is going to fall.'" },
+    { prompt:"Choose the correct form:", source:"At 8pm tonight, I ___ dinner with my family.", options:["will have","will be having","am having","have"], correct:1, explain:"An action in progress at a specific future time → future continuous: 'will be having.'" },
+    { prompt:"Choose the correct sentence:", source:"", options:["A: The phone's ringing. B: I'm going to get it.","A: The phone's ringing. B: I'll get it.","A: The phone's ringing. B: I get it.","A: The phone's ringing. B: I'm getting it since morning."], correct:1, explain:"A spontaneous decision made at the moment of speaking → 'will': 'I'll get it.'" },
+    { prompt:"Choose the correct form:", source:"They ___ married next summer — the invitations are already sent.", options:["will get","are getting","get","would get"], correct:1, explain:"An already-arranged, confirmed future plan → present continuous: 'are getting.'" },
+    { prompt:"Choose the correct form:", source:"By the time you arrive, I ___ already ___ the report.", options:["will / finish","will have / finished","am / finishing","have / finished"], correct:1, explain:"An action completed before another future point → future perfect: 'will have finished.'" },
+    { prompt:"Which is the best way to make an offer?", source:"", options:["I help you with that.","I'm going to help you with that.","I'll help you with that.","I help you with that, will I?"], correct:2, explain:"Spontaneous offers at the moment of speaking use 'will': 'I'll help you.'" },
+    { prompt:"Choose the correct form:", source:"The meeting ___ at 10am on Friday, according to the schedule.", options:["is starting","starts","will start","is going to start"], correct:1, explain:"A fixed schedule/timetable → present simple: 'starts.'" },
+    { prompt:"Choose the correct form:", source:"I ___ 30 next month.", options:["will be turning","turn","am turning","will turn"], correct:3, explain:"A simple future fact about age, not a spontaneous decision or planned arrangement → 'will': 'I will turn 30.'" },
+    { prompt:"Choose the correct form:", source:"She's packed her bags — she ___ leave tonight.", options:["will","is going to","is","would"], correct:1, explain:"A plan already decided and prepared for, with visible evidence → 'going to': 'is going to leave.'" },
+    { prompt:"Choose the correct form:", source:"In ten years, technology ___ completely.", options:["will change","will have changed","is changing","changes"], correct:1, explain:"A change viewed as complete by a future point in time → future perfect: 'will have changed.'" },
+    { prompt:"Choose the correct sentence:", source:"", options:["This time tomorrow, I will fly to London.","This time tomorrow, I will be flying to London.","This time tomorrow, I am flying to London tomorrow.","This time tomorrow, I fly to London."], correct:1, explain:"An action in progress at a specific future time → future continuous: 'will be flying.'" },
+    { prompt:"Choose the correct form:", source:"I don't think he ___ come to the party.", options:["is going to","will","is","would"], correct:1, explain:"An opinion-based prediction about the future → 'will': 'I don't think he will come.'" },
+    { prompt:"Choose the correct form:", source:"We ___ to Paris for our holiday — we've already bought the tickets.", options:["will go","are going","go","will have gone"], correct:1, explain:"An arranged, decided plan with clear evidence (tickets bought) → present continuous or 'going to'; here 'are going' fits the arranged-plan pattern." },
+    { prompt:"Choose the correct form:", source:"Watch out! You ___ drop that plate!", options:["will","are going to","are","would"], correct:1, explain:"A prediction based on something you can see happening right now → 'going to': 'are going to drop.'" }
+  ]});
+
+  TOPICS.push({ id:"modals-obligation", category:"modals", title:"Modals: Ability, Permission & Obligation", questions:[
+    { prompt:"Choose the correct form (general ability now):", source:"She ___ speak three languages.", options:["must","can","should","may"], correct:1, explain:"Present ability → 'can': 'She can speak three languages.'" },
+    { prompt:"Choose the correct form (general past ability):", source:"I ___ swim when I was five.", options:["can","could","was able to","must"], correct:1, explain:"General ability in the past → 'could': 'I could swim.'" },
+    { prompt:"Choose the correct form (a single past achievement):", source:"After months of practice, she finally ___ play the piece perfectly.", options:["could","was able to","can","must"], correct:1, explain:"For ONE specific past success (not general ability), use 'was able to' or 'managed to' — not 'could.'" },
+    { prompt:"Choose the correct form (law/rule):", source:"You ___ wear a seatbelt — it's the law.", options:["should","must","may","could"], correct:1, explain:"A strong obligation from a rule or law → 'must' (or 'have to')." },
+    { prompt:"Choose the correct form (external rule):", source:"He ___ finish the report by Friday; his boss said so.", options:["must","has to","should","may"], correct:1, explain:"An obligation imposed by someone else (the boss/a rule) is usually expressed with 'have to': 'has to finish.'" },
+    { prompt:"Choose the correct form (speaker's own feeling):", source:"I really ___ call my mother — I haven't spoken to her in weeks.", options:["have to","must","should only","may"], correct:1, explain:"When the obligation comes from the SPEAKER's own feeling (not an external rule), 'must' is the natural choice: 'I must call her.'" },
+    { prompt:"Choose the correct form (prohibition):", source:"You ___ smoke here — it's forbidden.", options:["don't have to","mustn't","shouldn't","may not always"], correct:1, explain:"'Mustn't' expresses prohibition — something is not allowed." },
+    { prompt:"Choose the correct form (no obligation):", source:"You ___ pay — it's free!", options:["mustn't","don't have to","shouldn't","can't"], correct:1, explain:"'Don't have to' means it's not necessary — very different in meaning from 'mustn't' (forbidden)." },
+    { prompt:"Choose the correct form (no obligation, past):", source:"We ___ wait long — the bus came immediately.", options:["mustn't","didn't have to","couldn't","shouldn't"], correct:1, explain:"'Didn't have to' = it wasn't necessary (and we didn't do it)." },
+    { prompt:"Choose the correct form (formal permission):", source:"___ I leave early today, please?", options:["Must","May","Should","Have to"], correct:1, explain:"'May' is the more formal, polite way to ask for permission." },
+    { prompt:"Choose the correct form (informal permission):", source:"___ I use your phone for a second?", options:["Must","Can","Should","Have to"], correct:1, explain:"'Can' is the common, everyday way to ask for permission." },
+    { prompt:"Choose the correct form (polite request):", source:"___ you help me with this bag, please?", options:["Must","Could","Should","May"], correct:1, explain:"'Could you…?' is a polite way to make a request." },
+    { prompt:"Choose the correct form (advice):", source:"I think you ___ see a doctor about that cough.", options:["must","should","can","may"], correct:1, explain:"'Should' is used for advice/recommendation, weaker than 'must.'" },
+    { prompt:"Choose the correct form (negative advice):", source:"You ___ stay up so late — you'll be tired tomorrow.", options:["mustn't","shouldn't","don't have to","can't"], correct:1, explain:"'Shouldn't' gives negative advice — it's not a good idea, but not forbidden." },
+    { prompt:"Choose the correct form (strong recommendation):", source:"You really ___ visit Cappadocia if you go to Turkey.", options:["can","should","may","have to always"], correct:1, explain:"'Should' works for strong recommendations too, especially with 'really.'" },
+    { prompt:"Choose the correct form (past inability/prohibition):", source:"In the past, women ___ vote in some countries.", options:["shouldn't","couldn't","mustn't have","weren't able to always"], correct:1, explain:"'Couldn't' describes a general lack of permission/ability in the past." },
+    { prompt:"Which sentence means it is NOT necessary?", source:"", options:["You mustn't bring your own food.","You don't have to bring your own food — we'll provide it.","You can't bring your own food.","You shouldn't bring your own food."], correct:1, explain:"'Don't have to' = not necessary, optional. 'Mustn't' would wrongly mean it's forbidden." },
+    { prompt:"Choose the correct form (rule):", source:"You ___ be 18 to enter this club.", options:["should","must","may","could"], correct:1, explain:"An age requirement/rule → 'must be 18.'" },
+    { prompt:"Choose the correct form (inability due to circumstance):", source:"Sorry, I ___ come to your party — I'm working that night.", options:["mustn't","can't","shouldn't","may not"], correct:1, explain:"'Can't' expresses present/future inability due to a specific reason." },
+    { prompt:"Choose the correct form (general past ability):", source:"When she was a child, she ___ climb trees really well.", options:["was able to","could","managed to","must"], correct:1, explain:"A general, repeated childhood ability → 'could,' not 'was able to' (which is for one specific occasion)." },
+    { prompt:"Choose the correct form (prohibition, polite):", source:"I'm sorry, you ___ park here — it's a private area.", options:["don't have to","can't","should","may"], correct:1, explain:"'Can't' here expresses that it's not allowed." },
+    { prompt:"Choose the correct question (necessity):", source:"Do we ___ bring our own food, or is it provided?", options:["must","have to","should","may"], correct:1, explain:"Questions about necessity typically use 'have to': 'Do we have to bring…'" },
+    { prompt:"Choose the correct form (company rule):", source:"He ___ to be at work by 9am — it's a company rule.", options:["must","has","should","may"], correct:1, explain:"An external rule → 'has to be': 'He has to be at work by 9am.'" },
+    { prompt:"Which sentence expresses the SPEAKER's own obligation/feeling, not an external rule?", source:"", options:["Employees have to wear a uniform.","I must remember to call my dentist.","Passengers have to show ID at the gate.","Students have to submit the form by Friday."], correct:1, explain:"'Must' in 'I must remember…' expresses the speaker's own sense of necessity, unlike the other sentences, which describe external rules with 'have to.'" },
+    { prompt:"Choose the correct form (ability, negative):", source:"I ___ hear you — can you speak louder?", options:["mustn't","can't","shouldn't","don't have to"], correct:1, explain:"Present inability (a physical fact) → 'can't hear.'" },
+    { prompt:"Choose the correct form (obligation, past):", source:"We ___ show our passports at the airport.", options:["had to","must","could","should"], correct:0, explain:"Past obligation uses 'had to' — 'must' has no past form for obligation." }
+  ]});
+
+  TOPICS.push({ id:"modals-deduction", category:"modals", title:"Modals: Possibility & Deduction", questions:[
+    { prompt:"Choose the correct form (weak possibility):", source:"She ___ be at home — I'm not sure.", options:["must","might","can't","should"], correct:1, explain:"'Might' expresses a weak, uncertain possibility." },
+    { prompt:"Choose the correct form (strong certainty, positive):", source:"He's been driving for ten hours — he ___ be exhausted.", options:["might","must","can","could"], correct:1, explain:"Strong logical certainty based on evidence → 'must be exhausted.'" },
+    { prompt:"Choose the correct form (strong certainty, negative):", source:"She just ate a huge meal — she ___ be hungry already.", options:["mustn't","can't","shouldn't","might not"], correct:1, explain:"'Can't' expresses strong certainty that something is NOT true — the opposite of 'must' for deduction." },
+    { prompt:"Choose the correct form:", source:"There's no answer — they ___ be out.", options:["must","might","can't","should"], correct:1, explain:"Uncertain speculation about a possible reason → 'might be out.'" },
+    { prompt:"Choose the correct form:", source:"That ___ be John — he's on holiday this week.", options:["can't","must","should","might"], correct:0, explain:"Strong certainty that something is impossible → 'can't be John.'" },
+    { prompt:"Choose the correct form (past deduction):", source:"The ground is wet — it ___ rained last night.", options:["must have","must","might","should have"], correct:0, explain:"A confident deduction about the past → 'must have rained' (modal + have + past participle)." },
+    { prompt:"Choose the correct form (past possibility):", source:"I'm not sure why she was late — she ___ missed the bus.", options:["must","might have","can't have","should have"], correct:1, explain:"An uncertain guess about a past event → 'might have missed.'" },
+    { prompt:"Choose the correct form (past impossibility):", source:"He ___ finished already — he only started an hour ago.", options:["can't have","must have","might have","should have"], correct:0, explain:"Strong certainty that something in the past is impossible → 'can't have finished.'" },
+    { prompt:"Choose the correct form:", source:"There's a strange noise upstairs. It ___ be the cat.", options:["must","could","mustn't","shouldn't"], correct:1, explain:"A possible explanation among others → 'could be the cat.'" },
+    { prompt:"Choose the correct form:", source:"She's not answering her phone — she ___ be in a meeting.", options:["can't","must","mustn't","might"], correct:3, explain:"A reasonable, uncertain guess → 'might be in a meeting.'" },
+    { prompt:"Which sentence expresses the strongest certainty?", source:"", options:["He might be the new manager.","He could be the new manager.","He must be the new manager.","He may be the new manager."], correct:2, explain:"'Must' expresses the strongest degree of logical certainty among these options for deduction." },
+    { prompt:"Choose the correct form (past deduction, negative uncertainty):", source:"I don't know if she got my message — she ___ not have seen it yet.", options:["might","must","can't","should"], correct:0, explain:"'Might not have' expresses uncertainty about a past event not happening." },
+    { prompt:"Choose the correct form:", source:"You've been studying all day — you ___ be tired.", options:["can't","must","mightn't","shouldn't"], correct:1, explain:"A confident deduction from clear evidence (studying all day) → 'must be tired.'" },
+    { prompt:"Choose the correct form:", source:"That restaurant is always empty — the food ___ be terrible.", options:["must","can't","might","should"], correct:0, explain:"A logical deduction based on evidence (always empty) → 'must be terrible.'" },
+    { prompt:"Choose the correct form (past, uncertain):", source:"I heard a car outside — it ___ been the neighbours.", options:["must have","can't have","could have","should have"], correct:2, explain:"An uncertain possibility about the past → 'could have been.'" },
+    { prompt:"Choose the correct sentence:", source:"", options:["She must have forgot her keys.","She must have forgotten her keys.","She must forgot her keys.","She must forgotten her keys."], correct:1, explain:"Past deduction needs 'must have' + past participle: 'must have forgotten.'" },
+    { prompt:"Choose the correct form:", source:"He's wearing a wedding ring — he ___ be married.", options:["might","must","can't","should"], correct:1, explain:"Strong evidence leads to a confident deduction → 'must be married.'" },
+    { prompt:"Choose the correct form:", source:"I'm not sure, but the shop ___ be closed on Sundays.", options:["must","might","can't","should"], correct:1, explain:"An uncertain guess, not a confident deduction → 'might be closed.'" },
+    { prompt:"Choose the correct form (impossible past event):", source:"You ___ seen him yesterday — he was in another country all week.", options:["can't have","must have","might have","should have"], correct:0, explain:"Strong certainty that a past event was impossible → 'can't have seen.'" },
+    { prompt:"Choose the correct form:", source:"The lights are off and the car isn't here — they ___ gone out.", options:["can't have","must have","shouldn't have","mightn't have"], correct:1, explain:"Confident deduction from clear evidence → 'must have gone out.'" },
+    { prompt:"Choose the correct form:", source:"I'm not certain, but I think it ___ be around 5pm now.", options:["must","might","can't","should"], correct:1, explain:"An uncertain estimate → 'might be around 5pm.'" },
+    { prompt:"Which sentence expresses an uncertain possibility, not a confident conclusion?", source:"", options:["He must be at work.","He could be at work.","He can't be at work.","He mustn't be at work."], correct:1, explain:"'Could be' expresses one possibility among others, without full certainty." },
+    { prompt:"Choose the correct form:", source:"She didn't say hello — she ___ not have recognised me.", options:["might","must","can't","should"], correct:0, explain:"An uncertain reason for past behaviour → 'might not have recognised.'" },
+    { prompt:"Choose the correct form:", source:"They've lived there for years — they ___ know the area very well.", options:["might","must","can't","should"], correct:1, explain:"Strong logical certainty from evidence (years living there) → 'must know.'" },
+    { prompt:"Choose the correct form:", source:"That ___ have been an easy decision for them — it was a huge risk.", options:["can't","must","might","should"], correct:0, explain:"Certainty that something was NOT the case, about the past → 'can't have been.'" },
+    { prompt:"Choose the correct form:", source:"I'm not sure who called — it ___ been a wrong number.", options:["must have","could have","can't have","should have"], correct:1, explain:"An uncertain guess about a past event → 'could have been.'" }
+  ]});
+
+  TOPICS.push({ id:"comparatives", category:"modals", title:"Comparatives & Superlatives", questions:[
+    { prompt:"Choose the correct form:", source:"This book is ___ than that one.", options:["interesting","more interesting","most interesting","interestinger"], correct:1, explain:"Two-or-more-syllable adjectives form the comparative with 'more': 'more interesting.'" },
+    { prompt:"Choose the correct form:", source:"Denizli is ___ than I expected.", options:["hoter","hottest","hotter","more hot"], correct:2, explain:"One-syllable adjectives double the final consonant and add -er: 'hot' → 'hotter.'" },
+    { prompt:"Choose the correct form:", source:"She is the ___ student in the class.", options:["more clever","cleverest","clever","most clever"], correct:1, explain:"Two-syllable adjectives ending in -y/-er/-le/-ow often take -est: 'clever' → 'cleverest' (both 'cleverest' and 'most clever' are used, but 'cleverest' is the standard short-adjective form)." },
+    { prompt:"Choose the correct form (irregular):", source:"This is ___ film I've ever seen.", options:["the goodest","the best","the most good","gooder"], correct:1, explain:"'Good' is irregular: good → better → best." },
+    { prompt:"Choose the correct form (irregular):", source:"My results this year are ___ than last year.", options:["worse","more bad","baddest","badder"], correct:0, explain:"'Bad' is irregular: bad → worse → worst." },
+    { prompt:"Choose the correct form:", source:"This is ___ building in the city.", options:["taller","the tallest","more tall","tallest"], correct:1, explain:"Superlatives need 'the': 'the tallest building.'" },
+    { prompt:"Choose the correct form (equality):", source:"My brother is ___ tall ___ me.", options:["as / as","more / than","the same / as","so / as"], correct:0, explain:"Equality between two things uses 'as + adjective + as': 'as tall as.'" },
+    { prompt:"Choose the correct form (inequality):", source:"This exercise isn't ___ difficult ___ the last one.", options:["as / as","more / than","so / than","the / as"], correct:0, explain:"Negative equality uses 'not as + adjective + as': 'not as difficult as.'" },
+    { prompt:"Choose the correct sentence:", source:"", options:["She is more taller than her sister.","She is taller than her sister.","She is tallest than her sister.","She is the tallest than her sister."], correct:1, explain:"Comparatives never combine '-er' and 'more' together: 'taller than,' not 'more taller.'" },
+    { prompt:"Choose the correct form:", source:"Traffic gets ___ and ___ every year.", options:["bad / bad","worse / worse","worst / worst","more bad / more bad"], correct:1, explain:"Repeated comparatives show continuous change: 'worse and worse.'" },
+    { prompt:"Choose the correct form:", source:"The ___ you practise, the ___ you get.", options:["more / better","most / best","more / gooder","much / good"], correct:0, explain:"'The + comparative…, the + comparative…' shows a parallel change: 'The more you practise, the better you get.'" },
+    { prompt:"Choose the correct form:", source:"This is by far ___ restaurant in town.", options:["good","better","the best","gooder"], correct:2, explain:"'By far' emphasises a superlative: 'by far the best restaurant.'" },
+    { prompt:"Choose the correct form:", source:"He earns ___ money than his brother.", options:["more","most","many","much more much"], correct:0, explain:"'Money' is uncountable — the comparative of 'much' is 'more': 'more money.'" },
+    { prompt:"Choose the correct form:", source:"This is one of ___ cities I have ever visited.", options:["beautiful","more beautiful","the most beautiful","beautifulest"], correct:2, explain:"'One of the + superlative + plural noun' is a common structure: 'one of the most beautiful cities.'" },
+    { prompt:"Choose the correct form:", source:"She speaks English ___ than her classmates.", options:["fluent","more fluently","fluentlier","the most fluently"], correct:1, explain:"Adverbs ending in -ly form comparatives with 'more': 'more fluently.'" },
+    { prompt:"Choose the correct form:", source:"This is ___ expensive option of all three.", options:["more","the most","most","the more"], correct:1, explain:"Comparing three or more things needs the superlative with 'the': 'the most expensive.'" },
+    { prompt:"Choose the correct form:", source:"He is ___ than he looks.", options:["older","more old","the oldest","oldest"], correct:0, explain:"One-syllable adjective comparative: 'old' → 'older.'" },
+    { prompt:"Choose the correct sentence:", source:"", options:["This test was more easier than the last one.","This test was easier than the last one.","This test was the easier than the last one.","This test was easyer than the last one."], correct:1, explain:"'Easy' → 'easier' (change y to i, add -er). No 'more' needed." },
+    { prompt:"Choose the correct form:", source:"Of all my friends, she lives ___ from the city centre.", options:["far","farther/further","the farthest/furthest","more far"], correct:2, explain:"Comparing among a whole group needs the superlative: 'the farthest/furthest.'" },
+    { prompt:"Choose the correct form:", source:"This laptop is ___ as that one, but it's much cheaper.", options:["as good","gooder","the best","more good"], correct:0, explain:"Equal quality → 'as good as': 'as good as that one.'" },
+    { prompt:"Choose the correct form:", source:"My new job is ___ stressful than my old one.", options:["less","fewer","least","the least"], correct:0, explain:"'Less' is used for the comparative of decrease with uncountable/quality concepts: 'less stressful.'" },
+    { prompt:"Choose the correct form:", source:"She has ___ patience than I do.", options:["fewer","less","least","the least"], correct:1, explain:"'Patience' is uncountable, so the comparative is 'less,' not 'fewer' (which is for countable nouns)." },
+    { prompt:"Choose the correct form:", source:"This was ___ exam I've ever taken.", options:["the more difficult","difficult","the most difficult","more difficult"], correct:2, explain:"Superlative with 'ever' + present perfect is a common structure: 'the most difficult exam I've ever taken.'" },
+    { prompt:"Choose the correct form:", source:"He is slightly ___ than his twin brother.", options:["tall","taller","the tallest","more taller"], correct:1, explain:"'Slightly' modifies a comparative form: 'slightly taller.'" },
+    { prompt:"Choose the correct form:", source:"This café has ___ customers than it used to.", options:["less","fewer","least","the least"], correct:1, explain:"'Customers' is countable, so the comparative is 'fewer,' not 'less.'" },
+    { prompt:"Which sentence correctly compares three or more things?", source:"", options:["She is the smarter of all the students.","She is smarter than all the students.","She is the smartest of all the students.","She is more smart than all the students."], correct:2, explain:"Comparing one item against a whole group of three or more needs the superlative: 'the smartest of all the students.'" }
+  ]});
+
+  TOPICS.push({ id:"cond-zero-first", category:"conditionals", title:"Zero & First Conditional", questions:[
+    { prompt:"Choose the correct forms (general fact):", source:"If water ___ to 0°C, it ___.", options:["freezes / freezes","will freeze / will freeze","froze / froze","freezes / will freeze"], correct:0, explain:"Zero conditional (a scientific fact) = if + present simple, present simple in both clauses." },
+    { prompt:"Choose the correct forms (real future):", source:"If it ___ tomorrow, we ___ the picnic.", options:["rains / cancel","will rain / will cancel","rains / will cancel","rained / would cancel"], correct:2, explain:"First conditional = if + present simple, will + base verb: 'If it rains, we will cancel.'" },
+    { prompt:"Choose the correct forms:", source:"If you ___ the button, the machine ___ on.", options:["press / turns","will press / turns","press / will turn","pressed / turned"], correct:0, explain:"A general fact about how the machine works → zero conditional: present simple in both clauses." },
+    { prompt:"Choose the correct forms:", source:"If I ___ time this weekend, I ___ you.", options:["have / call","have / will call","will have / call","had / would call"], correct:1, explain:"A real future possibility → first conditional: 'If I have time, I will call you.'" },
+    { prompt:"Choose the correct forms:", source:"Ice ___ if you ___ it.", options:["melts / heat","will melt / heat","melts / will heat","melted / heated"], correct:0, explain:"A general physical fact → zero conditional: present simple in both clauses." },
+    { prompt:"Choose the correct forms:", source:"If she ___ hard, she ___ the exam.", options:["studies / passes","studies / will pass","will study / passes","studied / will pass"], correct:1, explain:"A real future possibility (not a fact) → first conditional: 'If she studies, she will pass.'" },
+    { prompt:"Choose the correct forms (unless = if not):", source:"Unless you ___ now, you ___ the bus.", options:["leave / miss","leave / will miss","will leave / miss","left / would miss"], correct:1, explain:"'Unless' + present simple, 'will' in the result — same pattern as first conditional: 'Unless you leave now, you will miss the bus.'" },
+    { prompt:"Choose the correct form (fact):", source:"If you heat metal, it ___.", options:["expands","will expand","expand","expanded"], correct:0, explain:"A general physical fact → zero conditional: present simple." },
+    { prompt:"Choose the correct form:", source:"If we don't hurry, we ___ late.", options:["are","will be","were","would be"], correct:1, explain:"A real future consequence → first conditional: 'we will be late.'" },
+    { prompt:"Choose the correct form (fact):", source:"If plants don't get water, they ___.", options:["die","will die","died","would die"], correct:0, explain:"A general truth about plants → zero conditional: present simple." },
+    { prompt:"Choose the correct forms:", source:"If he ___ me, I ___ him back.", options:["calls / call","calls / will call","will call / calls","called / would call"], correct:1, explain:"A real future possibility → first conditional: 'If he calls, I will call him back.'" },
+    { prompt:"Choose the correct form (fact):", source:"If you mix red and blue, you ___ purple.", options:["get","will get","got","would get"], correct:0, explain:"A general, always-true fact about colour mixing → zero conditional." },
+    { prompt:"Choose the correct forms:", source:"What ___ you do if it ___ tomorrow?", options:["do / rains","will / rains","will / will rain","would / rained"], correct:1, explain:"First conditional question: 'What will you do if it rains?'" },
+    { prompt:"Choose the correct form (fact, negative):", source:"If the sun ___, plants ___ grow.", options:["doesn't shine / don't","won't shine / won't","doesn't shine / won't","didn't shine / wouldn't"], correct:0, explain:"A general fact, negative form in both clauses → zero conditional: present simple." },
+    { prompt:"Choose the correct form:", source:"She'll be upset if you ___ her birthday.", options:["forget","will forget","forgot","would forget"], correct:0, explain:"First conditional: if-clause stays in present simple even though the whole sentence is about the future: 'if you forget.'" },
+    { prompt:"Choose the correct form:", source:"If you don't practise, you ___ improve.", options:["don't","won't","didn't","wouldn't"], correct:1, explain:"A real future consequence, negative → first conditional: 'you won't improve.'" },
+    { prompt:"Choose the correct form (fact, with 'when'):", source:"When water reaches 100°C, it ___.", options:["boils","will boil","boiled","would boil"], correct:0, explain:"'When' can replace 'if' for facts that are always true → present simple: 'it boils.'" },
+    { prompt:"Choose the correct form:", source:"If I finish early, I ___ you a call.", options:["give","will give","gave","would give"], correct:1, explain:"A real future intention/possibility → first conditional: 'I will give you a call.'" },
+    { prompt:"Which sentence describes a general scientific fact (zero conditional)?", source:"", options:["If you will heat ice, it melts.","If you heat ice, it will melt.","If you heat ice, it melts.","If you heated ice, it melts."], correct:2, explain:"Zero conditional needs present simple in BOTH clauses: 'If you heat ice, it melts.'" },
+    { prompt:"Choose the correct form:", source:"If you ___ me a favour, I'll owe you one.", options:["do","will do","did","would do"], correct:0, explain:"First conditional if-clause stays in present simple: 'If you do me a favour…'" },
+    { prompt:"Choose the correct form:", source:"Unless it ___ up, we won't go out.", options:["clears","will clear","cleared","would clear"], correct:0, explain:"'Unless' + present simple, matching first conditional structure: 'Unless it clears up.'" },
+    { prompt:"Choose the correct form:", source:"If they ___ the deadline, they'll lose the contract.", options:["miss","will miss","missed","would miss"], correct:0, explain:"First conditional if-clause: present simple, 'if they miss.'" },
+    { prompt:"Choose the correct form (fact):", source:"Metal ___ when it's heated.", options:["expands","will expand","expand","expanded"], correct:0, explain:"A general physical fact → zero conditional: present simple." },
+    { prompt:"Choose the correct form:", source:"If you don't water plants, they ___.", options:["die","will die","died","are dying"], correct:0, explain:"A general truth → zero conditional: present simple, 'they die.'" },
+    { prompt:"Which sentence is grammatically correct?", source:"", options:["If it will rain, I will stay home.","If it rains, I will stay home.","If it rain, I will stay home.","If it rains, I stay home tomorrow."], correct:1, explain:"The if-clause in a first conditional never uses 'will' — only the result clause does: 'If it rains, I will stay home.'" },
+    { prompt:"Choose the correct form (imperative result):", source:"If you see John, ___ him my regards.", options:["give","will give","you give","gave"], correct:0, explain:"The result clause of a first conditional can also be an imperative (a command/request): 'If you see John, give him my regards.'" }
+  ]});
+
+  TOPICS.push({ id:"cond-second-third", category:"conditionals", title:"Second & Third Conditional", questions:[
+    { prompt:"Choose the correct forms (hypothetical present):", source:"If I ___ rich, I ___ travel the world.", options:["was / will","were / would","am / would","had been / would have"], correct:1, explain:"Second conditional = if + past simple ('were' for all persons in formal English), would + base verb." },
+    { prompt:"Choose the correct forms (hypothetical past):", source:"If I ___ known, I ___ come earlier.", options:["knew / would","had known / would have","had known / would","knew / would have"], correct:1, explain:"Third conditional = if + past perfect, would have + past participle: 'had known… would have come.'" },
+    { prompt:"Choose the correct form:", source:"If she ___ harder, she would have passed.", options:["studied","had studied","studies","would study"], correct:1, explain:"Third conditional if-clause: past perfect, 'had studied.'" },
+    { prompt:"Choose the correct form:", source:"If I ___ you, I wouldn't do that.", options:["am","was","were","will be"], correct:2, explain:"Second conditional, formal English uses 'were' for all persons: 'If I were you.'" },
+    { prompt:"Choose the correct form:", source:"What would you do if you ___ a million dollars?", options:["win","won","had won","would win"], correct:1, explain:"Second conditional if-clause: past simple, 'won.'" },
+    { prompt:"Choose the correct form:", source:"If we ___ left earlier, we wouldn't have missed the train.", options:["have","had","would have","did"], correct:1, explain:"Third conditional if-clause: past perfect, 'had left.'" },
+    { prompt:"Choose the correct form:", source:"She would be happier if she ___ a different job.", options:["has","had","have","would have"], correct:1, explain:"Second conditional if-clause: past simple, 'had.'" },
+    { prompt:"Choose the correct form:", source:"If it hadn't rained, we ___ the picnic outside.", options:["would have","would have had","will have","had had"], correct:1, explain:"Third conditional result clause: would have + past participle, 'would have had.'" },
+    { prompt:"Choose the correct form:", source:"If I had more time, I ___ learn Spanish.", options:["will","would","would have","had"], correct:1, explain:"Second conditional result clause: would + base verb, 'would learn.'" },
+    { prompt:"Choose the correct form (inversion):", source:"Had I known about the traffic, I ___ left earlier.", options:["would","would have","will have","had"], correct:1, explain:"Inverted third conditional (dropping 'if'): 'Had I known… I would have left earlier.'" },
+    { prompt:"Choose the correct form:", source:"If he ___ that mistake, he wouldn't have lost the job.", options:["didn't make","hadn't made","wouldn't make","doesn't make"], correct:1, explain:"Third conditional if-clause, negative: past perfect, 'hadn't made.'" },
+    { prompt:"Choose the correct form:", source:"I would help you if I ___ how.", options:["know","knew","had known","would know"], correct:1, explain:"Second conditional if-clause: past simple, 'knew.'" },
+    { prompt:"Choose the correct form:", source:"If you ___ me, what would you do?", options:["are","were","have been","will be"], correct:1, explain:"Second conditional if-clause: 'were.'" },
+    { prompt:"Choose the correct form:", source:"She wouldn't have been late if she ___ up earlier.", options:["woke","had woken","would wake","wakes"], correct:1, explain:"Third conditional if-clause: past perfect, 'had woken.'" },
+    { prompt:"Choose the correct form:", source:"If I won the lottery, I ___ buy a house.", options:["will","would","would have","had"], correct:1, explain:"Second conditional result clause: 'would buy.'" },
+    { prompt:"Choose the correct form (inversion):", source:"Were I in your position, I ___ accept the offer.", options:["will","would","would have","had"], correct:1, explain:"Inverted second conditional (dropping 'if'): 'Were I… I would accept.'" },
+    { prompt:"Choose the correct form:", source:"If they had invested earlier, they ___ made more profit.", options:["will have","would","would have","had"], correct:2, explain:"Third conditional result clause: 'would have made.'" },
+    { prompt:"Choose the correct form:", source:"If I ___ taller, I would play basketball.", options:["am","was","were","would be"], correct:2, explain:"Second conditional if-clause: 'were.'" },
+    { prompt:"Choose the correct form:", source:"If she hadn't missed the flight, she ___ on time.", options:["arrived","would arrive","would have arrived","had arrived"], correct:2, explain:"Third conditional result clause: 'would have arrived.'" },
+    { prompt:"Choose the correct form:", source:"I wouldn't worry if I ___ you.", options:["am","was","were","will be"], correct:2, explain:"Second conditional if-clause: 'were.'" },
+    { prompt:"Choose the correct form:", source:"If we had booked earlier, the tickets ___ cheaper.", options:["were","would be","would have been","had been"], correct:2, explain:"Third conditional result clause: 'would have been.'" },
+    { prompt:"Choose the correct form:", source:"If I spoke French, I ___ apply for that job.", options:["will","would","would have","had"], correct:1, explain:"Second conditional result clause: 'would apply.'" },
+    { prompt:"Which sentence correctly forms a third conditional?", source:"", options:["If I would have known, I would have come.","If I had known, I would have come.","If I knew, I would have come.","If I had known, I would come."], correct:1, explain:"'Would' never appears in a third-conditional if-clause. Correct: 'If I had known, I would have come.'" },
+    { prompt:"Choose the correct form:", source:"If you asked him, he ___ help you.", options:["will","would","would have","had"], correct:1, explain:"Second conditional result clause: 'would help.'" },
+    { prompt:"Choose the correct form:", source:"If she had studied medicine, she ___ a doctor.", options:["became","would become","would have become","had become"], correct:2, explain:"Third conditional result clause: 'would have become.'" },
+    { prompt:"Choose the correct form:", source:"What would you have done if you ___ in my situation?", options:["were","had been","are","would be"], correct:1, explain:"Third conditional if-clause: past perfect, 'had been.'" }
+  ]});
+
+  TOPICS.push({ id:"passive-voice", category:"conditionals", title:"Passive Voice", questions:[
+    { prompt:"Choose the correct passive form:", source:"The letter ___ by John.", options:["wrote","was written","is writing","written"], correct:1, explain:"Past simple passive: be (was) + past participle (written)." },
+    { prompt:"Choose the correct passive form:", source:"English ___ all over the world.", options:["speaks","is spoken","spoke","is speaking"], correct:1, explain:"Present simple passive, general fact: 'is spoken.'" },
+    { prompt:"Choose the correct passive form:", source:"The car ___ yesterday.", options:["repaired","was repaired","is repaired","has repaired"], correct:1, explain:"Past simple passive with a finished past time: 'was repaired.'" },
+    { prompt:"Choose the correct passive form:", source:"This building ___ in 1990.", options:["built","was built","is built","has been built"], correct:1, explain:"A specific finished past time ('in 1990') → past simple passive: 'was built.'" },
+    { prompt:"Choose the correct passive form (modal):", source:"The homework ___ by Friday.", options:["must finish","must be finished","must finished","must been finished"], correct:1, explain:"Modal passive = modal + be + past participle: 'must be finished.'" },
+    { prompt:"Choose the correct passive form:", source:"The results ___ tomorrow.", options:["will announce","will be announced","are announced","announced"], correct:1, explain:"Future simple passive: 'will be announced.'" },
+    { prompt:"Choose the correct passive form:", source:"The window ___ last night.", options:["broke","was broken","is broken","has broken"], correct:1, explain:"Past simple passive, specific past time: 'was broken.'" },
+    { prompt:"Choose the correct passive form:", source:"My phone ___ — I need to report it.", options:["stole","was steal","has been stolen","is stole"], correct:2, explain:"Present perfect passive, with present relevance: 'has been stolen.'" },
+    { prompt:"Choose the correct passive form:", source:"Rice ___ in many countries.", options:["grows","is grown","grew","has grown"], correct:1, explain:"Present simple passive, a general fact: 'is grown.'" },
+    { prompt:"Choose the correct passive form:", source:"The new bridge ___ next year.", options:["opens","will be opened","is opened","opened"], correct:1, explain:"Future simple passive: 'will be opened.'" },
+    { prompt:"Choose the correct passive form:", source:"The thief ___ by the police.", options:["caught","was caught","catches","has catch"], correct:1, explain:"Past simple passive: 'was caught.'" },
+    { prompt:"Choose the correct passive question:", source:"___ English ___ in this school?", options:["Is / taught","Does / teach","Is / teach","Do / taught"], correct:0, explain:"Present simple passive question: 'Is English taught…?'" },
+    { prompt:"Choose the correct passive form:", source:"The cake ___ by my grandmother.", options:["made","was made","is making","has make"], correct:1, explain:"Past simple passive: 'was made.'" },
+    { prompt:"Choose the correct passive form:", source:"This song ___ by millions of people.", options:["sings","is sung","sang","has sing"], correct:1, explain:"Present simple passive: 'is sung.'" },
+    { prompt:"Choose the correct passive form:", source:"The problem ___ already.", options:["solved","was solved","has been solved","is solve"], correct:2, explain:"Present perfect passive, emphasising a present result: 'has been solved.'" },
+    { prompt:"Choose the correct passive form:", source:"The letters ___ yesterday afternoon.", options:["posted","were posted","are posted","have posted"], correct:1, explain:"Past simple passive, plural subject: 'were posted.'" },
+    { prompt:"Choose the correct passive question:", source:"___ this seat ___?", options:["Is / taken","Does / take","Is / take","Has / took"], correct:0, explain:"Present simple passive question: 'Is this seat taken?'" },
+    { prompt:"Choose the correct passive form:", source:"The bridge ___ in the storm.", options:["damaged","was damaged","is damaged","has damage"], correct:1, explain:"Past simple passive, specific past event: 'was damaged.'" },
+    { prompt:"Choose the correct passive form:", source:"New employees ___ for two weeks.", options:["train","are trained","trained","have train"], correct:1, explain:"Present simple passive, a standard procedure: 'are trained.'" },
+    { prompt:"Choose the correct passive form:", source:"The decision ___ by the committee.", options:["made","was made","makes","has making"], correct:1, explain:"Past simple passive: 'was made.'" },
+    { prompt:"Choose the correct passive form:", source:"The email ___ sent yesterday.", options:["was","is","has been","were"], correct:0, explain:"Singular subject + specific past time → 'was sent.'" },
+    { prompt:"Choose the correct passive form:", source:"The museum ___ by thousands of tourists every year.", options:["visits","is visited","visited","has visit"], correct:1, explain:"Present simple passive, a repeated general fact: 'is visited.'" },
+    { prompt:"Choose the correct passive form:", source:"The car ___ by tomorrow.", options:["fixes","will be fixed","is fixed","fixed"], correct:1, explain:"Future simple passive: 'will be fixed.'" },
+    { prompt:"Choose the correct passive form:", source:"My wallet ___ by a kind stranger.", options:["found","was found","finds","has find"], correct:1, explain:"Past simple passive: 'was found.'" },
+    { prompt:"Choose the correct passive form (modal):", source:"This medicine ___ with food.", options:["should take","should be taken","should took","should be take"], correct:1, explain:"Modal passive: modal + be + past participle, 'should be taken.'" },
+    { prompt:"Which sentence is correctly formed in the passive?", source:"", options:["The report were written by the team.","The report was wrote by the team.","The report was written by the team.","The report is wrote by the team."], correct:2, explain:"Correct passive needs matching be-verb + correct past participle: 'was written' (singular subject, past simple, participle 'written')." }
+  ]});
+
+  TOPICS.push({ id:"reported-speech", category:"clauses", title:"Reported Speech", questions:[
+    { prompt:"Report this sentence:", source:"\"I am tired,\" she said.", options:["She said she is tired.","She said she was tired.","She said she has been tired.","She said she tired."], correct:1, explain:"Present simple backshifts to past simple in reported speech: 'was.'" },
+    { prompt:"Report this sentence:", source:"\"I will call you,\" he said.", options:["He said he will call me.","He said he calls me.","He said he would call me.","He said he is calling me."], correct:2, explain:"'Will' backshifts to 'would' in reported speech." },
+    { prompt:"Report this sentence:", source:"\"I have finished,\" she said.", options:["She said she has finished.","She said she had finished.","She said she finished.","She said she finishes."], correct:1, explain:"Present perfect backshifts to past perfect: 'had finished.'" },
+    { prompt:"Report this sentence:", source:"\"I can swim,\" he said.", options:["He said he can swim.","He said he could swim.","He said he swims.","He said he is able to swim."], correct:1, explain:"'Can' backshifts to 'could' in reported speech." },
+    { prompt:"Report this question:", source:"\"Where do you live?\" she asked.", options:["She asked where do I live.","She asked where I lived.","She asked where did I live.","She asked where I live."], correct:1, explain:"Reported questions use statement word order (no 'do/did') and backshift the tense: 'where I lived.'" },
+    { prompt:"Report this question:", source:"\"Are you coming?\" he asked.", options:["He asked was I coming.","He asked if I was coming.","He asked am I coming.","He asked that I was coming."], correct:1, explain:"Yes/no questions are reported with 'if' or 'whether' + statement word order: 'if I was coming.'" },
+    { prompt:"Report this command:", source:"\"Close the door,\" she said.", options:["She said close the door.","She told me close the door.","She told me to close the door.","She said me to close the door."], correct:2, explain:"Imperatives are reported with 'tell + object + to + verb': 'told me to close the door.'" },
+    { prompt:"Report this command:", source:"\"Don't be late,\" he said.", options:["He told me don't be late.","He told me not to be late.","He said not being late.","He told me to not be late."], correct:1, explain:"Negative imperatives: 'tell + object + not to + verb': 'told me not to be late.'" },
+    { prompt:"Report this sentence:", source:"\"I went to Paris last year,\" she said.", options:["She said she went to Paris the previous year.","She said she had gone to Paris the year before.","She said she has gone to Paris last year.","She said she goes to Paris last year."], correct:1, explain:"Past simple backshifts to past perfect, and 'last year' becomes 'the year before/the previous year.'" },
+    { prompt:"Report this sentence:", source:"\"I am working today,\" he said.", options:["He said he was working today.","He said he is working that day.","He said he was working that day.","He said he works that day."], correct:2, explain:"Present continuous → past continuous, and 'today' → 'that day.'" },
+    { prompt:"Report this question:", source:"\"What is your name?\" she asked me.", options:["She asked me what is my name.","She asked me what my name was.","She asked me what was my name.","She asked me what my name is."], correct:1, explain:"Reported wh-questions use statement word order and backshift: 'what my name was.'" },
+    { prompt:"Report this sentence:", source:"\"I saw him yesterday,\" she said.", options:["She said she saw him yesterday.","She said she had seen him the day before.","She said she has seen him yesterday.","She said she sees him yesterday."], correct:1, explain:"Past simple → past perfect, and 'yesterday' → 'the day before/the previous day.'" },
+    { prompt:"Report this sentence:", source:"\"I'll see you tomorrow,\" he said.", options:["He said he will see me tomorrow.","He said he would see me the next day.","He said he would see me tomorrow.","He said he sees me the next day."], correct:1, explain:"'Will' → 'would', and 'tomorrow' → 'the next day/the following day.'" },
+    { prompt:"Report this question:", source:"\"Do you like coffee?\" she asked.", options:["She asked if I like coffee.","She asked do I like coffee.","She asked if I liked coffee.","She asked that I liked coffee."], correct:2, explain:"Yes/no question with 'if' + backshifted tense: 'if I liked coffee.'" },
+    { prompt:"Report this sentence:", source:"\"I must leave now,\" she said.", options:["She said she must leave now.","She said she had to leave then.","She said she must have left then.","She said she has to leave now."], correct:1, explain:"'Must' (obligation) backshifts to 'had to', and 'now' becomes 'then.'" },
+    { prompt:"Choose the correctly reported question:", source:"\"Where do you work?\" she asked me.", options:["She asked me where did I work.","She asked me where I worked.","She asked me where I work.","She asked me where work I did."], correct:1, explain:"Statement word order + backshift: 'where I worked.'" },
+    { prompt:"Report this sentence:", source:"\"I'm going to buy a car,\" he said.", options:["He said he is going to buy a car.","He said he was going to buy a car.","He said he will buy a car.","He said he goes to buy a car."], correct:1, explain:"'Am going to' backshifts to 'was going to.'" },
+    { prompt:"Report this request:", source:"\"Please help me,\" she said.", options:["She said to help her.","She asked me to help her.","She told help her.","She asked I help her."], correct:1, explain:"Polite requests are reported like commands: 'ask + object + to + verb': 'asked me to help her.'" },
+    { prompt:"Report this sentence:", source:"\"I may come,\" he said.", options:["He said he may come.","He said he might come.","He said he can come.","He said he would come."], correct:1, explain:"'May' backshifts to 'might' in reported speech." },
+    { prompt:"Report this sentence:", source:"\"I have never been there,\" she said.", options:["She said she has never been there.","She said she had never been there.","She said she never went there.","She said she never goes there."], correct:1, explain:"Present perfect → past perfect: 'had never been.'" },
+    { prompt:"Choose the correct time expression:", source:"\"I'll finish it tomorrow,\" she said. → She said she would finish it ___.", options:["tomorrow","the next day","today","yesterday"], correct:1, explain:"'Tomorrow' changes to 'the next day' (or 'the following day') in reported speech." },
+    { prompt:"Choose the correct time expression:", source:"\"I saw her last week,\" he said. → He said he had seen her ___.", options:["last week","the week before","this week","next week"], correct:1, explain:"'Last week' changes to 'the week before' (or 'the previous week') in reported speech." },
+    { prompt:"Choose the correct pronoun change:", source:"\"This is my book,\" she said. → She said ___ was her book.", options:["this","that","it","these"], correct:1, explain:"'This' typically changes to 'that' when reporting speech from a different time/place." },
+    { prompt:"Choose the correct place change:", source:"\"I live here,\" he said. → He said he lived ___.", options:["here","there","this place","near"], correct:1, explain:"'Here' changes to 'there' in reported speech." },
+    { prompt:"Report this command:", source:"\"Don't touch that!\" she said.", options:["She told me don't touch that.","She told me not to touch that.","She said not touching that.","She told not to touch that."], correct:1, explain:"Negative imperative: 'told me not to touch that.'" },
+    { prompt:"Choose the correctly reported sentence:", source:"\"I can't come to the party tonight,\" he said.", options:["He said he can't come to the party tonight.","He said he couldn't come to the party that night.","He said he couldn't come to the party tonight.","He said he can't came to the party that night."], correct:1, explain:"'Can't' → 'couldn't', and 'tonight' → 'that night.'" }
+  ]});
+
+  TOPICS.push({ id:"relative-clauses", category:"clauses", title:"Relative Clauses", questions:[
+    { prompt:"Choose the correct relative pronoun:", source:"The man ___ lives next door is a doctor.", options:["which","who","where","whose"], correct:1, explain:"'Who' refers to a person acting as the subject of the clause." },
+    { prompt:"Choose the correct relative pronoun:", source:"The book ___ I read was interesting.", options:["who","which","where","whose"], correct:1, explain:"'Which' refers to a thing (a book)." },
+    { prompt:"Choose the correct relative word:", source:"This is the house ___ I grew up.", options:["which","that","where","who"], correct:2, explain:"'Where' introduces a relative clause referring to a place." },
+    { prompt:"Choose the correct relative word:", source:"Do you remember the day ___ we met?", options:["where","when","which","who"], correct:1, explain:"'When' introduces a relative clause referring to a time." },
+    { prompt:"Choose the correct relative word:", source:"That's the girl ___ brother is a footballer.", options:["who","which","whose","where"], correct:2, explain:"'Whose' shows possession — the girl's brother." },
+    { prompt:"Choose the correct relative pronoun:", source:"The woman ___ called you is my sister.", options:["which","who","where","when"], correct:1, explain:"'Who' refers to a person (the woman)." },
+    { prompt:"Choose the correct relative pronoun:", source:"I don't like the film ___ we watched.", options:["who","which","whose","when"], correct:1, explain:"'Which' refers to a thing (the film). 'That' would also work here." },
+    { prompt:"Choose the correct relative word:", source:"This is the restaurant ___ we had dinner.", options:["which","that","where","who"], correct:2, explain:"'Where' refers to a place (the restaurant)." },
+    { prompt:"Choose the correct relative pronoun:", source:"She's the person ___ helped me find my way.", options:["which","who","where","whose"], correct:1, explain:"'Who' refers to a person as the subject of the clause." },
+    { prompt:"Choose the correct relative pronoun:", source:"The car ___ he bought is very expensive.", options:["who","which","where","whose"], correct:1, explain:"'Which' refers to a thing (the car)." },
+    { prompt:"Choose the correct relative word:", source:"That's the reason ___ I was late.", options:["where","when","why","which"], correct:2, explain:"'Why' introduces a relative clause explaining a reason." },
+    { prompt:"Choose the correct sentence (non-defining clause):", source:"", options:["My brother who lives in Istanbul is visiting us. (I have several brothers)","My brother, who lives in Istanbul, is visiting us. (I have one brother)","My brother, which lives in Istanbul, is visiting us.","My brother whose lives in Istanbul is visiting us."], correct:1, explain:"With only one brother, the extra information needs commas (non-defining) and 'who' for a person." },
+    { prompt:"Choose the correct relative word:", source:"The hotel ___ we stayed was lovely.", options:["which","that","where","who"], correct:2, explain:"'Where' refers to a place (the hotel)." },
+    { prompt:"Which sentence can naturally drop the relative pronoun?", source:"", options:["The man who called is my uncle. (subject)","The book that I read was great. (object)","The city where I was born is beautiful.","The reason why I left is simple."], correct:1, explain:"When the relative pronoun is the OBJECT of the clause (as in 'the book that I read'), it can be dropped: 'The book I read was great.' Subject relative pronouns cannot be dropped." },
+    { prompt:"Choose the correct relative word:", source:"The teacher ___ class I'm in is very strict.", options:["who","which","whose","where"], correct:2, explain:"'Whose' shows possession — the teacher's class." },
+    { prompt:"Choose the correct relative pronoun:", source:"That's the shop ___ sells the best bread.", options:["who","which","whose","whom"], correct:1, explain:"'Which' (or 'that') refers to a thing (the shop) as the subject." },
+    { prompt:"Choose the correct relative word:", source:"I know a place ___ we can get good coffee.", options:["which","that","where","who"], correct:2, explain:"'Where' refers to a place." },
+    { prompt:"Choose the correct relative pronoun:", source:"The people ___ live upstairs are very noisy.", options:["which","who","where","whose"], correct:1, explain:"'Who' refers to people as the subject." },
+    { prompt:"Choose the correct relative pronoun:", source:"This is the moment ___ I've been waiting for.", options:["who","that","where","whose"], correct:1, explain:"'That' (or 'which') refers to a thing (the moment) here as the object of 'waiting for.'" },
+    { prompt:"Choose the correct sentence (non-defining):", source:"", options:["My friend who is a doctor gave me some advice. (I have one friend)","My friend, who is a doctor, gave me some advice.","My friend, which is a doctor, gave me some advice.","My friend whose is a doctor gave me some advice."], correct:1, explain:"Extra, non-essential information about a specific person needs commas + 'who.'" },
+    { prompt:"Choose the correct relative pronoun:", source:"The company ___ he works for is very big.", options:["who","that","where","whose"], correct:1, explain:"'That' (or 'which') refers to a thing (the company)." },
+    { prompt:"Choose the correct relative pronoun for a PERSON:", source:"", options:["The boy which broke the window ran away.","The boy who broke the window ran away.","The boy where broke the window ran away.","The boy whose broke the window ran away."], correct:1, explain:"'Who' is used for people, not 'which.'" },
+    { prompt:"Choose the correct relative pronoun for a THING:", source:"", options:["The phone who I bought is new.","The phone which I bought is new.","The phone who's I bought is new.","The phone whose I bought is new."], correct:1, explain:"'Which' (or 'that') is used for things, not 'who.'" },
+    { prompt:"Choose the correct relative word:", source:"That's the man ___ car was stolen.", options:["who","which","whose","where"], correct:2, explain:"'Whose' shows possession — the man's car." },
+    { prompt:"Choose the correctly punctuated sentence:", source:"", options:["My car which is red is parked outside.","My car, which is red, is parked outside.","My car, that is red, is parked outside.","My car which, is red, is parked outside."], correct:1, explain:"Extra, non-essential information (you only have one car) needs commas around the relative clause." },
+    { prompt:"Choose the sentence that correctly combines these two ideas:", source:"The scientist did the research. She works at a university.", options:["The scientist who works at a university did the research.","The scientist did the research who works at a university.","The scientist which works at a university did the research.","The scientist, works at a university, did the research."], correct:0, explain:"'Who works at a university' correctly modifies 'the scientist' right after the noun it describes." }
+  ]});
+
+  TOPICS.push({ id:"gerunds-infinitives", category:"clauses", title:"Gerunds & Infinitives", questions:[
+    { prompt:"Choose the correct form:", source:"I enjoy ___ books.", options:["read","to read","reading","reads"], correct:2, explain:"'Enjoy' is always followed by a gerund (-ing): 'enjoy reading.'" },
+    { prompt:"Choose the correct form:", source:"She wants ___ English.", options:["learn","to learn","learning","learns"], correct:1, explain:"'Want' is always followed by an infinitive: 'want to learn.'" },
+    { prompt:"Choose the correct form:", source:"He decided ___ early.", options:["leave","to leave","leaving","left"], correct:1, explain:"'Decide' is always followed by an infinitive: 'decide to leave.'" },
+    { prompt:"Choose the correct form:", source:"I avoid ___ fast food.", options:["eat","to eat","eating","ate"], correct:2, explain:"'Avoid' is always followed by a gerund: 'avoid eating.'" },
+    { prompt:"Choose the correct form (stopped an activity):", source:"They stopped ___ when I entered.", options:["talk","to talk","talking","talked"], correct:2, explain:"'Stop + gerund' means to stop doing something: 'stopped talking' (they were talking, then stopped)." },
+    { prompt:"Choose the correct form (stopped in order to):", source:"He stopped ___ some milk.", options:["buy","to buy","buying","bought"], correct:1, explain:"'Stop + infinitive' means to stop one activity in order to do another: 'stopped to buy' (he stopped walking/driving in order to buy milk)." },
+    { prompt:"Choose the correct form (gerund as subject):", source:"___ is good exercise.", options:["Swim","To swim","Swimming","Swims"], correct:2, explain:"A gerund can act as the subject of a sentence: 'Swimming is good exercise.'" },
+    { prompt:"Choose the correct form (after a preposition):", source:"She's interested in ___ new languages.", options:["learn","to learn","learning","learns"], correct:2, explain:"A verb after a preposition ('in') always takes the gerund form: 'interested in learning.'" },
+    { prompt:"Choose the correct form:", source:"I hope ___ you soon.", options:["see","to see","seeing","saw"], correct:1, explain:"'Hope' is followed by an infinitive: 'hope to see.'" },
+    { prompt:"Choose the correct form:", source:"We finished ___ dinner.", options:["eat","to eat","eating","ate"], correct:2, explain:"'Finish' is always followed by a gerund: 'finish eating.'" },
+    { prompt:"Choose the correct form:", source:"He promised ___ me.", options:["help","to help","helping","helped"], correct:1, explain:"'Promise' is followed by an infinitive: 'promise to help.'" },
+    { prompt:"Choose the correct form:", source:"I look forward to ___ you.", options:["meet","to meet","meeting","met"], correct:2, explain:"'Look forward to' is followed by a gerund (the 'to' here is a preposition, not part of an infinitive): 'look forward to meeting.'" },
+    { prompt:"Choose the correct form:", source:"She refused ___ the question.", options:["answer","to answer","answering","answered"], correct:1, explain:"'Refuse' is followed by an infinitive: 'refuse to answer.'" },
+    { prompt:"Choose the correct form:", source:"I don't mind ___.", options:["wait","to wait","waiting","waited"], correct:2, explain:"'Mind' is followed by a gerund: 'don't mind waiting.'" },
+    { prompt:"Choose the correct form:", source:"He offered ___ me home.", options:["drive","to drive","driving","drove"], correct:1, explain:"'Offer' is followed by an infinitive: 'offer to drive.'" },
+    { prompt:"Choose the correct form:", source:"They suggested ___ to the cinema.", options:["go","to go","going","went"], correct:2, explain:"'Suggest' is followed by a gerund: 'suggest going.'" },
+    { prompt:"Choose the correct form:", source:"I'm thinking of ___ my job.", options:["change","to change","changing","changed"], correct:2, explain:"After a preposition ('of'), use a gerund: 'thinking of changing.'" },
+    { prompt:"Choose the correct form:", source:"She agreed ___ us.", options:["help","to help","helping","helped"], correct:1, explain:"'Agree' is followed by an infinitive: 'agree to help.'" },
+    { prompt:"Choose the correct form:", source:"I can't stand ___ in queues.", options:["wait","to wait","waiting","waited"], correct:2, explain:"'Can't stand' is followed by a gerund: 'can't stand waiting.'" },
+    { prompt:"Choose the correct form:", source:"He needs ___ his homework.", options:["finish","to finish","finishing","finished"], correct:1, explain:"'Need' is followed by an infinitive: 'need to finish.'" },
+    { prompt:"Choose the correct form:", source:"Would you mind ___ the window?", options:["open","to open","opening","opened"], correct:2, explain:"'Would you mind' is followed by a gerund: 'mind opening.'" },
+    { prompt:"Choose the correct form:", source:"I'm used to ___ up early.", options:["get","to get","getting","got"], correct:2, explain:"'Be used to' is followed by a gerund (here 'to' is a preposition): 'used to getting up.'" },
+    { prompt:"Choose the correct form:", source:"She managed ___ on time.", options:["finish","to finish","finishing","finished"], correct:1, explain:"'Manage' is followed by an infinitive: 'manage to finish.'" },
+    { prompt:"Choose the correct form (a memory of an event):", source:"I remember ___ him at the party last year.", options:["see","to see","seeing","saw"], correct:2, explain:"'Remember + gerund' refers to recalling something that already happened: 'remember seeing him.'" },
+    { prompt:"Choose the correct form (don't forget to do it):", source:"Please remember ___ the door when you leave.", options:["lock","to lock","locking","locked"], correct:1, explain:"'Remember + infinitive' means not to forget to do something in the future: 'remember to lock.'" },
+    { prompt:"Which sentence is correctly formed?", source:"", options:["I enjoy to cook on weekends.","I want cooking on weekends.","I enjoy cooking on weekends.","I decided cooking on weekends."], correct:2, explain:"'Enjoy' takes a gerund: 'enjoy cooking.' The other options mismatch verb + pattern." }
+  ]});
+
+  TOPICS.push({ id:"articles", category:"clauses", title:"Articles: a / an / the", questions:[
+    { prompt:"Fill in both blanks:", source:"I saw ___ dog in the park. ___ dog was brown.", options:["a / The","the / A","a / A","the / The"], correct:0, explain:"First mention = 'a' (non-specific). Second mention of the same thing = 'The' (now specific)." },
+    { prompt:"Choose the correct article:", source:"She is ___ engineer.", options:["a","an","the","(no article)"], correct:1, explain:"'Engineer' starts with a vowel sound, so it takes 'an.'" },
+    { prompt:"Choose the correct pair:", source:"___ Moon goes around ___ Earth.", options:["A / an","The / the","A / the","The / an"], correct:1, explain:"Unique astronomical objects always take 'the': 'The Moon… the Earth.'" },
+    { prompt:"Choose the correct option:", source:"I like ___ music.", options:["a","the","(no article)","an"], correct:2, explain:"A general, uncountable idea (music in general) takes no article." },
+    { prompt:"Choose the correct article:", source:"Can you close ___ door, please?", options:["a","an","the","(no article)"], correct:2, explain:"A specific, known door (the one in the room) takes 'the.'" },
+    { prompt:"Choose the correct article:", source:"He is ___ best student in the class.", options:["a","an","the","(no article)"], correct:2, explain:"Superlatives always take 'the': 'the best student.'" },
+    { prompt:"Choose the correct article:", source:"We need ___ new car.", options:["a","an","the","(no article)"], correct:0, explain:"A non-specific, singular countable noun (any new car) takes 'a.'" },
+    { prompt:"Choose the correct article:", source:"___ Turkish people are known for their hospitality.", options:["A","An","The","(no article)"], correct:2, explain:"'The + nationality' refers to the people of that nation as a group: 'The Turkish.'" },
+    { prompt:"Choose the correct pair:", source:"I had ___ apple and ___ banana for breakfast.", options:["a / a","an / a","a / an","an / an"], correct:1, explain:"'Apple' starts with a vowel sound → 'an apple.' 'Banana' starts with a consonant sound → 'a banana.'" },
+    { prompt:"Choose the correct article:", source:"She plays ___ piano beautifully.", options:["a","an","the","(no article)"], correct:2, explain:"Musical instruments typically take 'the': 'plays the piano.'" },
+    { prompt:"Choose the correct option:", source:"Do you eat ___ meat?", options:["a","the","(no article)","an"], correct:2, explain:"A general, uncountable food category (meat in general) takes no article." },
+    { prompt:"Choose the correct article:", source:"This is ___ most beautiful place I've seen.", options:["a","an","the","(no article)"], correct:2, explain:"Superlatives take 'the': 'the most beautiful place.'" },
+    { prompt:"Choose the correct article:", source:"He works as ___ teacher.", options:["a","an","the","(no article)"], correct:0, explain:"A singular countable job noun after 'as' takes 'a': 'as a teacher.'" },
+    { prompt:"Choose the correct article:", source:"___ sun rises in the east.", options:["A","An","The","(no article)"], correct:2, explain:"There's only one sun — unique things take 'the.'" },
+    { prompt:"Choose the correct option:", source:"I don't like ___ cold weather.", options:["a","the","(no article)","an"], correct:2, explain:"General weather/abstract concepts take no article." },
+    { prompt:"Choose the correct article:", source:"She bought ___ umbrella because it was raining.", options:["a","an","the","(no article)"], correct:1, explain:"'Umbrella' starts with a vowel sound → 'an umbrella.'" },
+    { prompt:"Choose the correct article:", source:"___ Alps are in Europe.", options:["A","An","The","(no article)"], correct:2, explain:"Mountain ranges (plural names) take 'the': 'The Alps.'" },
+    { prompt:"Choose the correct article:", source:"Can I have ___ glass of water?", options:["a","an","the","(no article)"], correct:0, explain:"A non-specific single item (any glass) takes 'a.'" },
+    { prompt:"Choose the correct article:", source:"He's ___ only person who can help us.", options:["a","an","the","(no article)"], correct:2, explain:"'Only' signals uniqueness, which always takes 'the': 'the only person.'" },
+    { prompt:"Choose the correct option:", source:"I go to ___ school by bus every day.", options:["a","the","(no article)","an"], correct:2, explain:"'Go to school' as a general institution/experience takes no article." },
+    { prompt:"Choose the correct option:", source:"I need ___ information about the course.", options:["a","the","(no article)","an"], correct:2, explain:"'Information' is uncountable and general here, so it takes no article." },
+    { prompt:"Choose the correct article:", source:"She's ___ most intelligent person I know.", options:["a","an","the","(no article)"], correct:2, explain:"Superlatives take 'the': 'the most intelligent person.'" },
+    { prompt:"Choose the correct article:", source:"___ Nile is the longest river in Africa.", options:["A","An","The","(no article)"], correct:2, explain:"Rivers take 'the': 'The Nile.'" },
+    { prompt:"Choose the correct article:", source:"I want to buy ___ new phone.", options:["a","an","the","(no article)"], correct:0, explain:"A non-specific singular countable noun takes 'a': 'a new phone.'" },
+    { prompt:"Choose the correct option:", source:"He never eats ___ breakfast.", options:["a","the","(no article)","an"], correct:2, explain:"General meal names (breakfast, lunch, dinner) usually take no article." },
+    { prompt:"Which sentence uses articles correctly?", source:"", options:["I saw a elephant at the zoo.","I saw an elephant at zoo.","I saw an elephant at the zoo.","I saw the elephant at a zoo, once, first time."], correct:2, explain:"'Elephant' starts with a vowel sound → 'an elephant'; a specific, known zoo → 'the zoo.'" }
+  ]});
+
+  TOPICS.push({ id:"prepositions", category:"clauses", title:"Prepositions of Time & Place", questions:[
+    { prompt:"Choose the correct preposition:", source:"I was born ___ 1995.", options:["at","on","in","by"], correct:2, explain:"Years take 'in': 'in 1995.'" },
+    { prompt:"Choose the correct preposition:", source:"The meeting is ___ Monday.", options:["at","on","in","by"], correct:1, explain:"Days take 'on': 'on Monday.'" },
+    { prompt:"Choose the correct preposition:", source:"See you ___ 5 o'clock.", options:["at","on","in","by"], correct:0, explain:"Clock times take 'at': 'at 5 o'clock.'" },
+    { prompt:"Choose the correct preposition:", source:"She arrived ___ the airport.", options:["in","on","at","to"], correct:2, explain:"A specific point/building typically takes 'at': 'at the airport.'" },
+    { prompt:"Choose the correct preposition:", source:"The cat is sitting ___ the table.", options:["in","on","at","into"], correct:1, explain:"A surface takes 'on': 'on the table.'" },
+    { prompt:"Choose the correct preposition:", source:"There's a fly ___ my soup!", options:["on","at","in","into"], correct:2, explain:"An enclosed space (inside the soup) takes 'in': 'in my soup.'" },
+    { prompt:"Choose the correct preposition:", source:"We're meeting ___ the morning.", options:["at","on","in","by"], correct:2, explain:"Parts of the day (morning/afternoon/evening) take 'in': 'in the morning.'" },
+    { prompt:"Choose the correct preposition:", source:"I'll see you ___ Christmas.", options:["in","on","at","by"], correct:2, explain:"Holiday periods often take 'at': 'at Christmas.'" },
+    { prompt:"Choose the correct preposition:", source:"He was born ___ 3rd May.", options:["at","on","in","by"], correct:1, explain:"Specific dates take 'on': 'on 3rd May.'" },
+    { prompt:"Choose the correct preposition:", source:"The shop closes ___ midnight.", options:["at","on","in","by"], correct:0, explain:"Specific clock times (including midnight/noon) take 'at': 'at midnight.'" },
+    { prompt:"Choose the correct preposition:", source:"I live ___ Denizli.", options:["at","on","in","to"], correct:2, explain:"Cities take 'in': 'in Denizli.'" },
+    { prompt:"Choose the correct preposition:", source:"She's married ___ a doctor.", options:["with","to","for","at"], correct:1, explain:"'Married to' is the fixed preposition combination." },
+    { prompt:"Choose the correct preposition:", source:"He's good ___ maths.", options:["in","on","at","for"], correct:2, explain:"'Good at' is the fixed preposition combination for skills/subjects." },
+    { prompt:"Choose the correct preposition:", source:"I'm interested ___ history.", options:["for","at","on","in"], correct:3, explain:"'Interested in' is the fixed preposition combination." },
+    { prompt:"Choose the correct preposition:", source:"We arrived ___ Istanbul at midnight.", options:["at","on","in","to"], correct:2, explain:"Arriving IN a city/country: 'in Istanbul.' ('Arrive at' is for smaller/specific points like a station or airport.)" },
+    { prompt:"Choose the correct preposition:", source:"Turn left ___ the corner.", options:["in","on","at","to"], correct:2, explain:"A specific point takes 'at': 'at the corner.'" },
+    { prompt:"Choose the correct preposition:", source:"The book is ___ the shelf.", options:["in","on","at","into"], correct:1, explain:"A surface takes 'on': 'on the shelf.'" },
+    { prompt:"Choose the correct preposition:", source:"I'll be back ___ ten minutes.", options:["at","on","in","by"], correct:2, explain:"A future time period ('in X minutes/hours') takes 'in': 'in ten minutes.'" },
+    { prompt:"Choose the correct preposition:", source:"He's afraid ___ spiders.", options:["from","of","for","with"], correct:1, explain:"'Afraid of' is the fixed preposition combination." },
+    { prompt:"Choose the correct preposition:", source:"She apologised ___ being late.", options:["for","of","about","at"], correct:0, explain:"'Apologise for' is the fixed preposition combination." },
+    { prompt:"Choose the correct preposition:", source:"I'm looking forward ___ the weekend.", options:["for","at","to","on"], correct:2, explain:"'Look forward to' is the fixed preposition combination." },
+    { prompt:"Choose the correct preposition:", source:"The plane arrives ___ 6pm.", options:["in","on","at","by"], correct:2, explain:"Clock times take 'at': 'at 6pm.'" },
+    { prompt:"Choose the correct preposition:", source:"We went ___ holiday last summer.", options:["in","at","on","to"], correct:2, explain:"'Go on holiday' is the fixed preposition combination." },
+    { prompt:"Choose the correct preposition:", source:"He's responsible ___ this project.", options:["of","for","to","with"], correct:1, explain:"'Responsible for' is the fixed preposition combination." },
+    { prompt:"Choose the correct preposition:", source:"My birthday is ___ July.", options:["at","on","in","by"], correct:2, explain:"Months take 'in': 'in July.'" },
+    { prompt:"Choose the correct preposition:", source:"I need to finish this ___ Friday.", options:["at","on","by","in"], correct:2, explain:"'By' means 'before or at' a deadline: 'by Friday.'" },
+    { prompt:"Which sentence uses prepositions correctly?", source:"", options:["I'll meet you in the bus stop at 8 o'clock.","I'll meet you at the bus stop in 8 o'clock.","I'll meet you at the bus stop at 8 o'clock.","I'll meet you on the bus stop at 8 o'clock."], correct:2, explain:"A specific point (bus stop) takes 'at,' and a clock time also takes 'at': 'at the bus stop at 8 o'clock.'" }
+  ]});
+
+  TOPICS.push({ id:"questions-tags", category:"advanced", title:"Question Forms & Question Tags", questions:[
+    { prompt:"Choose the correct question:", source:"___ you like tea?", options:["Do","Does","Are","Is"], correct:0, explain:"Present simple yes/no question with 'you' → 'Do you like tea?'" },
+    { prompt:"Choose the correct question:", source:"___ she living in Denizli?", options:["Do","Does","Is","Are"], correct:2, explain:"Present continuous question: 'Is she living…?'" },
+    { prompt:"Choose the correct question word:", source:"___ did you go last night?", options:["What","Where","Who","Why"], correct:1, explain:"Asking about a place → 'Where.'" },
+    { prompt:"Choose the correct subject question:", source:"___ made this cake?", options:["Who did make","Who made","Did who make","Who does make"], correct:1, explain:"When asking about the SUBJECT of the sentence, no extra auxiliary 'do/did' is needed: 'Who made this cake?'" },
+    { prompt:"Choose the correct question:", source:"___ do you usually wake up?", options:["What","What time","Which time","How"], correct:1, explain:"Asking about a specific time → 'What time do you usually wake up?'" },
+    { prompt:"Choose the correct question tag:", source:"You're coming, ___?", options:["are you","aren't you","don't you","won't you"], correct:1, explain:"A positive statement takes a negative tag: 'You're coming, aren't you?'" },
+    { prompt:"Choose the correct question tag:", source:"She doesn't like coffee, ___?", options:["does she","doesn't she","is she","isn't she"], correct:0, explain:"A negative statement takes a positive tag: 'doesn't like… does she?'" },
+    { prompt:"Choose the correct question tag:", source:"They can swim, ___?", options:["can they","can't they","do they","don't they"], correct:1, explain:"Positive statement + negative tag, matching the modal 'can': 'can't they?'" },
+    { prompt:"Choose the correct question tag:", source:"He's not coming, ___?", options:["is he","isn't he","does he","doesn't he"], correct:0, explain:"A negative statement takes a positive tag: 'isn't coming… is he?'" },
+    { prompt:"Choose the correct question tag:", source:"Let's go, ___?", options:["do we","shall we","don't we","will we"], correct:1, explain:"'Let's' suggestions always take the tag 'shall we?'" },
+    { prompt:"Choose the correct question word:", source:"___ book is this?", options:["Who","Whose","Which one","What's"], correct:1, explain:"Asking about possession → 'Whose book is this?'" },
+    { prompt:"Choose the correct question:", source:"___ many people came to the party?", options:["What","How","Which","So"], correct:1, explain:"'How many' asks about a countable quantity." },
+    { prompt:"Choose the correct question word:", source:"___ did you get here — by bus or by car?", options:["What","Where","How","Why"], correct:2, explain:"Asking about method/manner → 'How.'" },
+    { prompt:"Choose the correct subject question:", source:"Who ___ the window?", options:["did break","broke","does break","breaks did"], correct:1, explain:"Subject questions don't need 'do/did': 'Who broke the window?'" },
+    { prompt:"Choose the correct object question:", source:"Who ___ you see at the party?", options:["did","do","were","was"], correct:0, explain:"Asking about the OBJECT of the action needs 'did': 'Who did you see?'" },
+    { prompt:"Choose the correct embedded question:", source:"I wonder ___ he is.", options:["where is","where's","where","is where"], correct:2, explain:"Embedded/indirect questions use statement word order, no inversion: 'I wonder where he is.'" },
+    { prompt:"Choose the correct embedded question:", source:"Can you tell me ___ the station is?", options:["where is","where","is where","where's is"], correct:1, explain:"Statement word order in embedded questions: 'Can you tell me where the station is?'" },
+    { prompt:"Choose the correct embedded question:", source:"Do you know ___ time it is?", options:["what's","what","is what","what is"], correct:1, explain:"Statement word order: 'Do you know what time it is?'" },
+    { prompt:"Choose the correct question tag:", source:"You haven't finished, ___?", options:["have you","haven't you","did you","don't you"], correct:0, explain:"A negative statement takes a positive tag: 'haven't finished… have you?'" },
+    { prompt:"Choose the correct question tag:", source:"Nobody called, ___?", options:["did they","didn't they","did he","does anybody"], correct:0, explain:"'Nobody' is treated as negative, so the tag is positive, using 'they' to refer back: 'did they?'" },
+    { prompt:"Choose the correct question tag:", source:"I'm right, ___?", options:["am I not","aren't I","amn't I","am I"], correct:1, explain:"The irregular tag for 'I am' is 'aren't I?'" },
+    { prompt:"Choose the correct question word:", source:"___ is your favourite colour?", options:["What","Which","How","Why"], correct:0, explain:"Asking for open information (from an unlimited range) → 'What.'" },
+    { prompt:"Choose the correct question word:", source:"___ old are you?", options:["What","How","Which","So"], correct:1, explain:"Asking about age uses 'How old.'" },
+    { prompt:"Choose the correctly ordered question:", source:"", options:["Where you are going?","Where are you going?","You are going where?","Where going are you?"], correct:1, explain:"Question word order: question word + auxiliary + subject + verb: 'Where are you going?'" },
+    { prompt:"Choose the correct question word:", source:"___ does this word mean?", options:["What","Which","How","Why"], correct:0, explain:"Asking for a definition/meaning → 'What does this word mean?'" },
+    { prompt:"Choose the correctly formed indirect question:", source:"", options:["She asked me where did I live.","She asked me where I live.","She asked me where I lived.","She asked me where lived I."], correct:2, explain:"Indirect/reported questions use statement word order and backshift the tense: 'where I lived.'" },
+    { prompt:"Choose the correct question tag:", source:"This isn't very difficult, ___?", options:["is it","isn't it","does it","doesn't it"], correct:0, explain:"A negative statement takes a positive tag: 'isn't very difficult… is it?'" }
+  ]});
+
+  TOPICS.push({ id:"phrasal-verbs", category:"advanced", title:"Common Phrasal Verbs", questions:[
+    { prompt:"Choose the correct phrasal verb:", source:"I need to ___ early tomorrow for my flight.", options:["get up","get on","get over","get in"], correct:0, explain:"'Get up' means to rise from bed." },
+    { prompt:"Choose the correct phrasal verb:", source:"Could you ___ the volume? It's too loud.", options:["turn up","turn down","turn on","turn off"], correct:1, explain:"'Turn down' means to reduce (volume, heat, etc.)." },
+    { prompt:"Choose the correct phrasal verb:", source:"She decided to ___ smoking last year.", options:["give up","give in","give away","give out"], correct:0, explain:"'Give up' means to stop doing a habit permanently." },
+    { prompt:"Choose the correct phrasal verb:", source:"Please ___ this form with your details.", options:["fill in","fill up","fill out with","fill on"], correct:0, explain:"'Fill in' (or 'fill out') means to complete a form." },
+    { prompt:"Choose the correct phrasal verb:", source:"He ___ a great idea during the meeting.", options:["came up with","came into","came over","came out"], correct:0, explain:"'Come up with' means to think of/produce an idea." },
+    { prompt:"Choose the correct phrasal verb:", source:"I can't ___ this noise anymore!", options:["put up with","put down","put off","put on"], correct:0, explain:"'Put up with' means to tolerate something unpleasant." },
+    { prompt:"Choose the correct phrasal verb:", source:"Let's ___ the meeting until next week.", options:["put off","put up","put on","put away"], correct:0, explain:"'Put off' means to postpone." },
+    { prompt:"Choose the correct phrasal verb:", source:"Can you ___ my cat while I'm on holiday?", options:["look after","look for","look into","look up"], correct:0, explain:"'Look after' means to take care of someone/something." },
+    { prompt:"Choose the correct phrasal verb:", source:"The plane will ___ in ten minutes.", options:["take off","take up","take away","take out"], correct:0, explain:"'Take off' describes a plane leaving the ground." },
+    { prompt:"Choose the correct phrasal verb:", source:"I need to ___ my English before the exam.", options:["brush up on","brush off","brush away","brush into"], correct:0, explain:"'Brush up on' means to improve a skill you already have but haven't used recently." },
+    { prompt:"Choose the correct phrasal verb:", source:"She ___ the job offer because the salary was too low.", options:["turned down","turned up","turned on","turned into"], correct:0, explain:"'Turn down' means to refuse/reject an offer." },
+    { prompt:"Choose the correct phrasal verb:", source:"Please ___ the lights when you leave the room.", options:["turn off","turn down","turn over","turn into"], correct:0, explain:"'Turn off' means to switch something off." },
+    { prompt:"Choose the correct phrasal verb:", source:"We ___ an old friend at the supermarket yesterday.", options:["ran into","ran out of","ran over","ran away"], correct:0, explain:"'Run into' means to meet someone by chance." },
+    { prompt:"Choose the correct phrasal verb:", source:"He ___ in a small village near Denizli.", options:["grew up","grew into","grew out","grew apart"], correct:0, explain:"'Grow up' means to spend your childhood somewhere / become an adult." },
+    { prompt:"Choose the correct phrasal verb:", source:"I'll ___ you up at 6pm.", options:["pick","take","get","bring"], correct:0, explain:"'Pick up' means to collect someone, usually by car." },
+    { prompt:"Choose the correct phrasal verb:", source:"Don't ___! You're almost finished.", options:["give up","give in","give out","give off"], correct:0, explain:"'Give up' here means to stop trying/quit." },
+    { prompt:"Choose the correct phrasal verb:", source:"She ___ that the story wasn't true.", options:["found out","found off","found up","found into"], correct:0, explain:"'Find out' means to discover a piece of information." },
+    { prompt:"Choose the correct phrasal verb:", source:"They ___ the trip because of bad weather.", options:["called off","called up","called on","called out"], correct:0, explain:"'Call off' means to cancel." },
+    { prompt:"Choose the correct phrasal verb:", source:"Can you ___ what I say? I'll speak slowly.", options:["write down","write up","write off","write out for"], correct:0, explain:"'Write down' means to record something in writing." },
+    { prompt:"Choose the correct phrasal verb:", source:"He ___ the mess after the party.", options:["cleaned up","cleaned out","cleaned off","cleaned away"], correct:0, explain:"'Clean up' means to tidy something that is messy." },
+    { prompt:"Choose the correct phrasal verb:", source:"I need to ___ this decision before I answer.", options:["think over","think up","think out","think off"], correct:0, explain:"'Think over' means to consider something carefully." },
+    { prompt:"Choose the correct phrasal verb:", source:"She ___ me in on the whole story.", options:["filled","told","said","spoke"], correct:0, explain:"'Fill someone in (on something)' means to give them the details/full information." },
+    { prompt:"Choose the correct phrasal verb:", source:"The car broke ___ on the highway.", options:["down","up","off","out"], correct:0, explain:"'Break down' means a machine/vehicle stops working." },
+    { prompt:"Choose the correct phrasal verb:", source:"Let's ___ to the next topic.", options:["move on","move up","move over","move off"], correct:0, explain:"'Move on' means to proceed to the next thing." },
+    { prompt:"Choose the correct phrasal verb:", source:"I ___ an interesting article while browsing yesterday.", options:["came across","came up","came into","came off"], correct:0, explain:"'Come across' means to find something by chance." },
+    { prompt:"What does \"give up\" mean?", source:"", options:["To stop doing something","To start doing something","To do something quickly","To do something again"], correct:0, explain:"'Give up' means to stop trying or stop a habit." },
+    { prompt:"What does \"look forward to\" mean?", source:"", options:["To feel excited about a future event","To search for something","To look in a direction","To remember something"], correct:0, explain:"'Look forward to' means to feel happy/excited about something that is going to happen." }
+  ]});
+
+  TOPICS.push({ id:"inversion-advanced", category:"advanced", title:"Inversion & Advanced Structures", questions:[
+    { prompt:"Choose the correct inverted form:", source:"Never ___ I seen such a mess!", options:["I have","have I","did I have","I did have"], correct:1, explain:"'Never' at the start of a sentence triggers inversion: auxiliary before subject, 'have I.'" },
+    { prompt:"Choose the correct inverted form:", source:"Not only ___ he late, but he also forgot the documents.", options:["he was","was he","did he","he did"], correct:1, explain:"'Not only' at the start triggers inversion: 'was he late.'" },
+    { prompt:"Choose the correct inverted form:", source:"Rarely ___ we eat out during the week.", options:["we do","do we","we did","did we do"], correct:1, explain:"Negative-frequency adverbials ('rarely,' 'seldom') at the start trigger inversion: 'do we eat.'" },
+    { prompt:"Choose the correct inverted form:", source:"Hardly ___ arrived when the phone rang.", options:["I had","had I","I did","did I"], correct:1, explain:"'Hardly' at the start triggers inversion: 'had I arrived.'" },
+    { prompt:"Choose the correct inverted form:", source:"No sooner ___ he sat down than the doorbell rang.", options:["he had","had he","did he","he did"], correct:1, explain:"'No sooner' triggers inversion, and pairs with 'than': 'had he sat down… than.'" },
+    { prompt:"Choose the correct inverted form:", source:"Little ___ she know what was about to happen.", options:["she did","did she","she does","does she"], correct:1, explain:"'Little' (meaning 'not at all') at the start triggers inversion: 'did she know.'" },
+    { prompt:"Choose the correct form:", source:"So tired ___ that I fell asleep immediately.", options:["I was","was I","I did","did I"], correct:1, explain:"'So + adjective' fronted for emphasis triggers inversion: 'was I.'" },
+    { prompt:"Choose the correct form:", source:"Such ___ the noise that we couldn't sleep.", options:["was","were","did","had"], correct:0, explain:"'Such + be + noun… that' is an inversion pattern for emphasis: 'Such was the noise that…'" },
+    { prompt:"Choose the correct inverted form:", source:"Only after the meeting ___ I understand the problem.", options:["I did","did I","I had","had I"], correct:1, explain:"'Only after…' at the start triggers inversion: 'did I understand.'" },
+    { prompt:"Choose the correct inverted form:", source:"Under no circumstances ___ you open this door.", options:["you should","should you","you must","must you"], correct:1, explain:"'Under no circumstances' triggers inversion with the modal: 'should you open.'" },
+    { prompt:"Which sentence means the same as \"If you should need help, please call us\"?", source:"", options:["Should you need help, please call us.","Did you need help, please call us.","Should need you help, please call us.","You should need help, please call us."], correct:0, explain:"Inverted conditionals drop 'if' and move the auxiliary before the subject: 'Should you need help…'" },
+    { prompt:"Which sentence means the same as \"If I were you, I would apologise\"?", source:"", options:["I were you, I would apologise.","Were I you, I would apologise.","Was I you, I would apologise.","I would apologise, were you I."], correct:1, explain:"Inverted second conditional: 'Were I you, I would apologise.'" },
+    { prompt:"Which sentence means the same as \"If I had known, I would have come\"?", source:"", options:["Had I known, I would have come.","I had known, would I have come.","Have I known, I would have come.","Known I had, I would have come."], correct:0, explain:"Inverted third conditional: 'Had I known, I would have come.'" },
+    { prompt:"Choose the correctly inverted sentence for emphasis:", source:"", options:["Not only she is talented, but also hardworking.","Not only is she talented, but she is also hardworking.","Not only talented is she, but hardworking also.","She is not only talented, is also hardworking."], correct:1, explain:"'Not only' at the start needs full inversion: 'is she talented.'" },
+    { prompt:"Choose the correct inverted form:", source:"Not until she called ___ I know the truth.", options:["I did","did I","I do","do I"], correct:1, explain:"'Not until…' at the start triggers inversion in the main clause: 'did I know.'" },
+    { prompt:"Choose the correctly inverted sentence:", source:"", options:["Never I have seen such dedication.","Never have I seen such dedication.","Never did have I seen such dedication.","Never seen I have such dedication."], correct:1, explain:"'Never' + auxiliary + subject + past participle: 'Never have I seen.'" },
+    { prompt:"Choose the correctly inverted sentence:", source:"", options:["Rarely you see such dedication.","Rarely see you such dedication.","Rarely do you see such dedication.","Rarely did you seeing such dedication."], correct:2, explain:"'Rarely' + auxiliary + subject + base verb: 'Rarely do you see.'" },
+    { prompt:"Choose the correct inverted form:", source:"Not only ___ she a doctor, but she's also a published author.", options:["is","does","has","was"], correct:0, explain:"Present tense context needs 'is': 'Not only is she a doctor…'" },
+    { prompt:"Choose the correct form:", source:"Hardly had we started ___ it began to rain.", options:["than","then","when","that"], correct:2, explain:"'Hardly… when' is the correct pairing (unlike 'no sooner… than')." },
+    { prompt:"Choose the correct form:", source:"No sooner had I sat down ___ the phone rang.", options:["when","then","that","than"], correct:3, explain:"'No sooner… than' is the correct fixed pairing." },
+    { prompt:"Choose the correctly inverted negative-adverbial sentence:", source:"", options:["Seldom I have seen such talent.","Seldom have I seen such talent.","Seldom did I have seen such talent.","Seldom I did see such talent."], correct:1, explain:"'Seldom' + auxiliary + subject: 'Seldom have I seen.'" },
+    { prompt:"Choose the correct form:", source:"So difficult ___ the exam that many students failed.", options:["was","did","had","were"], correct:0, explain:"'So + adjective + be + subject + that' inversion pattern: 'So difficult was the exam that…'" },
+    { prompt:"Choose the correct inverted form:", source:"Only when I saw the photo ___ I recognise her.", options:["I did","did I","I had","had I"], correct:1, explain:"'Only when…' at the start triggers inversion: 'did I recognise.'" },
+    { prompt:"Choose the correct cleft sentence:", source:"It is honesty ___ matters most in this job.", options:["who","which","that","what"], correct:2, explain:"'It is X that…' is the standard cleft-sentence pattern for emphasis." },
+    { prompt:"Choose the correct cleft sentence:", source:"What I need right now ___ a good night's sleep.", options:["am","is","are","be"], correct:1, explain:"'What I need is…' — a cleft sentence with 'is' since 'a good night's sleep' is singular." },
+    { prompt:"Which sentence uses inversion correctly?", source:"", options:["Never before I had seen such a view.","Never before had I seen such a view.","Never before I have seen such a view.","Never before did I had seen such a view."], correct:1, explain:"'Never before' + auxiliary + subject + past participle: 'had I seen.'" }
+  ]});
+
+  var STORAGE_KEY = "lbenglishco-grammar-ladder-v1";
+  function loadProgress(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ return {}; } }
+  function saveProgress(p){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); }catch(e){} }
+  var progress = loadProgress();
+
+  var activeCategory = CATEGORIES[0].id;
+  var activeTopicId = null;
+  var examState = {}; // topicId -> { answers: [], submitted: bool }
+
+  function topicsInCategory(catId){ return TOPICS.filter(function(t){ return t.category === catId; }); }
+  function getTopic(id){ return TOPICS.filter(function(t){ return t.id === id; })[0]; }
+
+  function renderCategoryNav(){
+    var nav = document.getElementById("categoryNav");
+    nav.innerHTML = "";
+    CATEGORIES.forEach(function(cat){
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "catpill" + (cat.id === activeCategory ? " is-active" : "");
+      btn.textContent = cat.label;
+      btn.addEventListener("click", function(){
+        activeCategory = cat.id;
+        var first = topicsInCategory(cat.id)[0];
+        renderCategoryNav();
+        renderTopicNav();
+        if(first) selectTopic(first.id);
+      });
+      nav.appendChild(btn);
+    });
+  }
+
+  function renderTopicNav(){
+    var nav = document.getElementById("topicNav");
+    nav.innerHTML = "";
+    topicsInCategory(activeCategory).forEach(function(topic){
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "topictab" + (topic.id === activeTopicId ? " is-active" : "") + (progress[topic.id] ? " is-done" : "");
+      btn.innerHTML = topic.title + '<span class="topictab__check"></span>';
+      btn.addEventListener("click", function(){ selectTopic(topic.id); });
+      nav.appendChild(btn);
+    });
+  }
+
+  function updateHeaderProgress(){
+    var done = TOPICS.filter(function(t){ return progress[t.id]; }).length;
+    document.getElementById("headerProgress").textContent = done + " / " + TOPICS.length;
+  }
+
+  function selectTopic(topicId){
+    activeTopicId = topicId;
+    var topic = getTopic(topicId);
+    if(topic.category !== activeCategory){ activeCategory = topic.category; renderCategoryNav(); }
+    renderTopicNav();
+    examState[topicId] = { answers: new Array(topic.questions.length).fill(null), submitted:false };
+    renderExamPanel(topic);
+    document.getElementById("examStage").scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  function renderExamPanel(topic){
+    var stage = document.getElementById("examStage");
+    stage.innerHTML = "";
+    var card = document.createElement("div");
+    card.className = "exam-card";
+
+    var head = document.createElement("div");
+    head.className = "exam-card__head";
+    var last = progress[topic.id];
+    head.innerHTML = '<div><p class="exam-card__title">' + topic.title + '</p><p class="exam-card__meta">' + topic.questions.length + ' questions · B1+</p></div>' +
+      (last ? '<span class="exam-card__best">Last score: ' + last.correct + '/' + last.total + ' (' + last.pct + '%)</span>' : '');
+    card.appendChild(head);
+
+    var qlist = document.createElement("div");
+    qlist.className = "qlist";
+    topic.questions.forEach(function(q, idx){
+      var wrap = document.createElement("div");
+      wrap.className = "mock-q";
+      var num = document.createElement("span");
+      num.className = "mock-q__num";
+      num.textContent = "Question " + (idx+1) + " of " + topic.questions.length;
+      wrap.appendChild(num);
+      var prompt = document.createElement("p");
+      prompt.className = "exercise__prompt";
+      prompt.textContent = q.prompt;
+      wrap.appendChild(prompt);
+      if(q.source){
+        var src = document.createElement("p");
+        src.className = "exercise__source";
+        src.textContent = q.source;
+        wrap.appendChild(src);
+      }
+      var opts = document.createElement("div");
+      opts.className = "moptions";
+      q.options.forEach(function(optText, i){
+        var obtn = document.createElement("button");
+        obtn.type = "button";
+        obtn.className = "moption";
+        obtn.textContent = optText;
+        obtn.addEventListener("click", function(){
+          opts.querySelectorAll(".moption").forEach(function(b){ b.classList.remove("is-selected"); });
+          obtn.classList.add("is-selected");
+          examState[topic.id].answers[idx] = i;
+          updateExamProgress(topic);
+        });
+        opts.appendChild(obtn);
+      });
+      wrap.appendChild(opts);
+      qlist.appendChild(wrap);
+    });
+    card.appendChild(qlist);
+
+    var actions = document.createElement("div");
+    actions.className = "exam-actions";
+    actions.innerHTML = '<span class="exam-actions__progress" id="examProgressText">0 / ' + topic.questions.length + ' answered</span>';
+    var submitBtn = document.createElement("button");
+    submitBtn.type = "button";
+    submitBtn.className = "btn btn--primary";
+    submitBtn.textContent = "Submit Exam";
+    submitBtn.addEventListener("click", function(){ submitExam(topic); });
+    actions.appendChild(submitBtn);
+    card.appendChild(actions);
+
+    var resultsEl = document.createElement("div");
+    resultsEl.id = "resultsPanel";
+    card.appendChild(resultsEl);
+
+    stage.appendChild(card);
+  }
+
+  function updateExamProgress(topic){
+    var state = examState[topic.id];
+    var answered = state.answers.filter(function(a){ return a !== null && a !== undefined; }).length;
+    var el = document.getElementById("examProgressText");
+    if(el) el.textContent = answered + " / " + topic.questions.length + " answered";
+  }
+
+  function submitExam(topic){
+    var state = examState[topic.id];
+    if(!state || state.submitted) return;
+    state.submitted = true;
+
+    var correctCount = 0;
+    var reviewHtml = "";
+    topic.questions.forEach(function(q, idx){
+      var given = state.answers[idx];
+      var isCorrect = given === q.correct;
+      var givenText = (given === null || given === undefined) ? "(no answer)" : q.options[given];
+      if(isCorrect) correctCount++;
+      reviewHtml += '<div class="review-item ' + (isCorrect?"is-correct":"is-incorrect") + '">' +
+        '<p class="review-item__q">Q' + (idx+1) + '. ' + q.prompt + '</p>' +
+        '<p class="review-item__ans">Your answer: <strong>' + givenText + '</strong>' +
+        (isCorrect ? "" : ' · Correct: <strong>' + q.options[q.correct] + '</strong>') + '</p>' +
+        (q.explain ? '<p class="review-item__ans">' + q.explain + '</p>' : '') +
+        '</div>';
+    });
+
+    var total = topic.questions.length;
+    var pct = Math.round((correctCount/total)*100);
+    var msg;
+    if(pct >= 90) msg = "Excellent control of this topic — you're ready to move on.";
+    else if(pct >= 75) msg = "Solid, with a few gaps — review the questions you missed below.";
+    else if(pct >= 50) msg = "Getting there — this topic needs more focused practice.";
+    else msg = "This is a priority topic — go back to basics here before moving on.";
+
+    progress[topic.id] = { correct: correctCount, total: total, pct: pct };
+    saveProgress(progress);
+    updateHeaderProgress();
+    renderTopicNav();
+
+    var resultsEl = document.getElementById("resultsPanel");
+    resultsEl.innerHTML =
+      '<div class="results-summary"><div class="score-circle" style="--spct:' + pct + '"><div class="score-circle__hole"><span><span class="score-circle__num">' + correctCount + '/' + total + '</span><span class="score-circle__of">' + pct + '%</span></span></div></div>' +
+      '<div class="results-summary__text"><p class="results-summary__band">' + msg + '</p></div></div>' +
+      '<div class="review-list">' + reviewHtml + '</div>' +
+      '<button class="btn btn--ghost" id="retakeBtn">↻ Retake this exam</button>';
+    resultsEl.querySelector("#retakeBtn").addEventListener("click", function(){ selectTopic(topic.id); });
+
+    document.querySelector(".exam-actions").style.display = "none";
+    resultsEl.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    renderCategoryNav();
+    renderTopicNav();
+    updateHeaderProgress();
+    if(TOPICS.length) selectTopic(topicsInCategory(activeCategory)[0].id);
+  });
+})();
+</script>
+</body>
+</html>
